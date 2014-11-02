@@ -17,14 +17,6 @@ public class MenuDao {
 		return m_baseDao.delete("menu.delete", id);
 	}
 
-	public Menu findByNamePassword(String menuName, String password) {
-		Map<String, String> pars = new HashMap<String, String>();
-
-		pars.put("menuName", menuName);
-		pars.put("password", password);
-		return (Menu) m_baseDao.queryForObject("menu.findByName", pars);
-	}
-
 	public Menu findByPK(int id) {
 		return (Menu) m_baseDao.queryForObject("menu.findById", id);
 	}

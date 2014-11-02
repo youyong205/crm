@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="report" type="com.report.Report" />
+	<sql id="report.columns">
+		id,shopId,period,money,number,creationDate,modifyDate
+	</sql>
+	<select id="report.queryByShopId" resultClass="report">
+		select <include refid="report.columns" /> from report
+		<![CDATA[where shopId=#shopId# and period>=#start# and period<=#end# order by period ]]>
+	</select>
+	<insert id="report.insert" parameterClass="report">
+		insert into report (<include refid="report.columns" />) values
+		(#id#,#shopId#,#period#,#money#,#number#,now(),now())
+		ON DUPLICATE KEY UPDATE money=money+#money#,number=number+#number#
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+</sqlMap>

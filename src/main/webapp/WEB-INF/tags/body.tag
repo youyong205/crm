@@ -1,4 +1,5 @@
 <%@ tag trimDirectiveWhitespaces="true" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/WEB-INF/tld/struts-tags.tld"%>
 <html lang="en"><head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta charset="utf-8">
@@ -138,41 +139,23 @@
 		    </a> <b class="arrow"></b>
 
 			<ul class="submenu">
+				<li id="reportList" class=""><a href="index.do"> <i
+						class="menu-icon fa fa-caret-right"></i> 营业信息
+				</a> <b class="arrow"></b></li>
 				<li id="shopList" class=""><a href="shopList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 店铺信息
 				</a> <b class="arrow"></b></li>
-				<li id="menuList" class="menuList"><a href="menuList.do"> <i
+				<li id="menuList" class="menuList"><a href='menuList.do?shopId=<s:property value="shopId"/>&index=<s:property value="index"/>'> <i
 						class="menu-icon fa fa-caret-right"></i> 菜品管理
 				</a> <b class="arrow"></b></li>
 
-				<li id="memberList" class=""><a href="memberList.do"> <i
+				<li id="memberList" class=""><a href=""> <i
 						class="menu-icon fa fa-caret-right"></i> 员工管理
 				</a> <b class="arrow"></b></li>
-				<li id="orderList" class=""><a href="orderList.do"> <i
+				<li id="orderList" class=""><a href='orderList.do?shopId=<s:property value="shopId"/>&index=<s:property value="index"/>'> <i
 						class="menu-icon fa fa-caret-right"></i> 订单管理
 				</a> <b class="arrow"></b></li>
 			</ul></li>
-
-		<li class="hsub"><a href="#" class="dropdown-toggle"> <i
-				class="menu-icon fa fa-list"></i> <span class="menu-text">
-					分析报表 </span> <b class="arrow fa fa-angle-down"></b>
-		</a> <b class="arrow"></b>
-			<ul class="submenu">
-				<li class=""><a href=""> <i
-						class="menu-icon fa fa-caret-right"></i> 菜品分析
-				</a> <b class="arrow"></b></li>
-
-				<li class=""><a href=""> <i
-						class="menu-icon fa fa-caret-right"></i> 营业额分析
-				</a> <b class="arrow"></b></li>
-				<li class=""><a href=""> <i
-						class="menu-icon fa fa-caret-right"></i> 客流分析
-				</a> <b class="arrow"></b></li>
-				<li class=""><a href=""> <i
-						class="menu-icon fa fa-caret-right"></i> 人均分析
-				</a> <b class="arrow"></b></li>
-			</ul></li>
-
 		<li id="systemMenu" class="hsub"><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-tag"></i> <span class="menu-text">系统管理</span>
 				<b class="arrow fa fa-angle-down"></b>

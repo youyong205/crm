@@ -52,7 +52,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 	protected SimpleDateFormat m_sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	private List<String> m_modules = new ArrayList<String>(Arrays.asList(Modules.s_user_module, Modules.s_role_module,
-	      Modules.s_resource_module, Modules.s_log_module, Modules.s_shop_module));
+	      Modules.s_resource_module, Modules.s_log_module, Modules.s_shop_module, Modules.s_report_module));
 
 	public String buildResource(String module, String oper) {
 		return module + ":" + oper;

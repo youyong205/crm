@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	<constant name="struts.objectFactory"
 		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
 	<constant name="struts.custom.i18n.resources" value="resource.messageResource"></constant>
@@ -24,6 +24,7 @@
 	<include file="config/struts/shop.xml"></include>
 	<include file="config/struts/menu.xml"></include>
 	<include file="config/struts/order.xml"></include>
+	<include file="config/struts/report.xml"></include>
 	<package name="default" extends="struts-default">
 		<global-results>
 			<result name="success">admin/SystemSuccess.jsp</result>

@@ -17,14 +17,6 @@ public class ResourceDao {
 		return m_baseDao.delete("resource.delete", id);
 	}
 
-	public Resource findByNamePassword(String resourceName, String password) {
-		Map<String, String> pars = new HashMap<String, String>();
-
-		pars.put("resourceName", resourceName);
-		pars.put("password", password);
-		return (Resource) m_baseDao.queryForObject("resource.findByName", pars);
-	}
-
 	public Resource findByPK(int id) {
 		return (Resource) m_baseDao.queryForObject("resource.findById", id);
 	}

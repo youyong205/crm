@@ -21,14 +21,6 @@ public class RoleDao {
 		return m_baseDao.delete("roleResource.deleteByRoleId", roleId);
 	}
 
-	public Role findByNamePassword(String roleName, String password) {
-		Map<String, String> pars = new HashMap<String, String>();
-
-		pars.put("roleName", roleName);
-		pars.put("password", password);
-		return (Role) m_baseDao.queryForObject("role.findByName", pars);
-	}
-
 	public Role findByPK(int id) {
 		return (Role) m_baseDao.queryForObject("role.findById", id);
 	}

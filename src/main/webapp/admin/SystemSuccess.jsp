@@ -11,17 +11,14 @@
 <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-	<%@include file="./Head.jsp"%>
   </br>
   </br>
   <div class="container-fluid background-body" >
     <div class="row-fluid">
-      <%@include file="./Menu.jsp"%>
       <div class="span10">
         	<h2 class="text-center"><img src="img/success.jpeg"></h2>
       </div>
     </div>
-    <%@include file="./Foot.jsp"%>
   </div>
 </body>
 </html>

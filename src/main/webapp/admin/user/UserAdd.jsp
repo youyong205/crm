@@ -10,7 +10,7 @@
 		</script>
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
-				href="index.action">首页</a></li>
+				href="index.do">首页</a></li>
 			<li>系统管理</li>
 			<li class="active">新增用户</li>
 		</ul>

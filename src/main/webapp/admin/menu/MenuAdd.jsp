@@ -13,7 +13,7 @@
 		</script>
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
-				href="index.action">首页</a></li>
+				href="index.do">首页</a></li>
 			<li>店铺管理</li>
 			<li class="active">新增菜单信息</li>
 		</ul>

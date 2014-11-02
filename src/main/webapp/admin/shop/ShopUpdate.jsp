@@ -13,7 +13,7 @@
 		</script>
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
-				href="index.action">首页</a></li>
+				href="index.do">首页</a></li>
 			<li>店铺管理</li>
 			<li class="active">商户信息</li>
 		</ul>
@@ -39,7 +39,7 @@
 					class="{required:true,maxlength:128}" value="<s:property value="shop.address"/>" /></td>
 			</tr><tr>
 				<td  style="text-align: right;"><strong
-					class="text-success">面积</strong></td>
+					class="text-success">面积(平方米)</strong></td>
 				<td><input type="text" name="shop.area"
 					class="{required:true,number:true}" value="<s:property value="shop.area"/>" /></td>
 			</tr><tr>

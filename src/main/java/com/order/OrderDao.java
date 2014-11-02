@@ -17,14 +17,6 @@ public class OrderDao {
 		return m_baseDao.delete("order.delete", id);
 	}
 
-	public Order findByNamePassword(String orderName, String password) {
-		Map<String, String> pars = new HashMap<String, String>();
-
-		pars.put("orderName", orderName);
-		pars.put("password", password);
-		return (Order) m_baseDao.queryForObject("order.findByName", pars);
-	}
-
 	public Order findByPK(int id) {
 		return (Order) m_baseDao.queryForObject("order.findById", id);
 	}

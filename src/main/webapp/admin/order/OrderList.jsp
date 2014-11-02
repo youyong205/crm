@@ -13,20 +13,19 @@
 		</script>
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
-				href="index.action">首页</a></li>
+				href="index.do">首页</a></li>
 			<li>店铺管理</li>
 			<li class="active">订单列表</li>
 		</ul>
 	</div>
 	<form class=" margin-buttom" action="orderList.do" method="post">
-		<div style="padding-left:5px;padding-top:8px;"><strong>商户</strong>
+		<div style="padding-left:5px;padding-top:8px;"><strong>店铺</strong>
 			  	 <s:select name="shopId" id="shop"
 						list="shops"  listKey="id" listValue="name"  value="shopId"
 						theme="simple" >
 				 </s:select>
-			  <button type="submit" >
-			  	<i class="text-success ace-icon fa fa-search nav-search-icon"></i>
-			  </button></div>
+			  <button type="submit" class="btn btn-success btn-sm">查询</button>
+			 </div>
 			  </form>
 	<table
 		class="table table-striped table-bordered table-condensed table-hover">

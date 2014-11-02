@@ -23,11 +23,10 @@
 		all--;
 	}
 	var all = 10;
-	if (all > 0) window.setInterval("timeDesc();", 1000);
+	if (all > 0) window.setInterval("timeDesc();", 10000);
 </script>
 </head>
 <body>
-  <%@include file="./Head.jsp"%>
   </br>
   </br>
   <div class="row-fluid">

@@ -12,13 +12,7 @@ public class TimeLineChart {
 
 	private List<Data> series = new ArrayList<Data>();
 
-	private int step;
-
-	public void addDouble(String subTitle,Map<Double,Double> data){
-		series.add(new Data(subTitle, data));
-	}
-	
-	public void addLong(String subTitle, Map<Long, Double> data) {
+	public void add(String subTitle, Map<Long, Double> data) {
 		Map<Double, Double> temp = new LinkedHashMap<Double, Double>();
 
 		for (Entry<Long, Double> entry : data.entrySet()) {
@@ -83,14 +77,6 @@ public class TimeLineChart {
 		public String getY() {
 			return y;
 		}
-	}
-
-	public int getStep() {
-		return step;
-	}
-
-	public void setStep(int step) {
-		this.step = step;
 	}
 
 }

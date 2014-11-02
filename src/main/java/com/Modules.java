@@ -12,8 +12,10 @@ public class Modules {
 
 	public static String s_shop_module = "商户模块";
 
-	public static String s_menu_model ="菜单模块";
+	public static String s_menu_module = "菜单模块";
 
-	public static String s_order_model="订单模块";
+	public static String s_order_module = "订单模块";
+
+	public static String s_report_module = "报表模块";
 
 }

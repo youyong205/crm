@@ -10,6 +10,8 @@ import com.Modules;
 import com.Operation;
 import com.PagedAction;
 import com.log.Log;
+import com.report.Report;
+import com.report.ReportService;
 import com.shop.Shop;
 import com.shop.ShopService;
 import com.user.User;
@@ -31,11 +33,14 @@ public class OrderAction extends PagedAction {
 	@Autowired
 	private OrderService m_orderService;
 
+	@Autowired
+	private ReportService m_reportService;
+
 	private Order m_order = new Order();
 
 	@Override
 	public String getActionModule() {
-		return Modules.s_order_model;
+		return Modules.s_order_module;
 	}
 
 	public Order getOrder() {
@@ -47,7 +52,7 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderAdd() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_add));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_add));
 
 		if (auth != null) {
 			return auth.getName();
@@ -69,14 +74,22 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderAddSubmit() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_add));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_add));
 		if (auth != null) {
 			return auth.getName();
 		}
 		try {
 			int id = m_orderService.insertOrder(m_order);
 			if (id > 0) {
-				Log log = createLog(Modules.s_order_model, Operation.s_operation_add, m_order);
+				Report report = new Report();
+
+				report.setShopId(m_order.getShopId());
+				report.setPeriod(m_order.getPeriod());
+				report.setNumber(m_order.getNumber());
+				report.setMoney(m_order.getMoney1() + m_order.getMoney2() + m_order.getMoney3());
+				m_reportService.insertReport(report);
+
+				Log log = createLog(Modules.s_order_module, Operation.s_operation_add, m_order);
 
 				m_logService.insertLog(log);
 				return SUCCESS;
@@ -90,7 +103,7 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderDelete() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_delete));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_delete));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -100,7 +113,7 @@ public class OrderAction extends PagedAction {
 		try {
 			int count = m_orderService.deleteOrder(m_orderId);
 			if (count > 0) {
-				Log log = createLog(Modules.s_order_model, Operation.s_operation_delete, m_orderId);
+				Log log = createLog(Modules.s_order_module, Operation.s_operation_delete, m_orderId);
 
 				m_logService.insertLog(log);
 				return SUCCESS;
@@ -114,7 +127,7 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderList() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_detail));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_detail));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -142,7 +155,7 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderUpdate() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_update));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_update));
 
 		if (auth != null) {
 			return auth.getName();
@@ -169,7 +182,7 @@ public class OrderAction extends PagedAction {
 	}
 
 	public String orderUpdateSubmit() {
-		Authority auth = checkAuthority(buildResource(Modules.s_order_model, Operation.s_operation_update));
+		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_update));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -179,7 +192,7 @@ public class OrderAction extends PagedAction {
 		try {
 			int count = m_orderService.updateOrder(m_order);
 			if (count > 0) {
-				Log log = createLog(Modules.s_order_model, Operation.s_operation_update, m_order);
+				Log log = createLog(Modules.s_order_module, Operation.s_operation_update, m_order);
 
 				m_logService.insertLog(log);
 				return SUCCESS;
@@ -219,5 +232,11 @@ public class OrderAction extends PagedAction {
 	public void setShopId(int shopId) {
 		m_shopId = shopId;
 	}
+
+	public void setReportService(ReportService reportService) {
+   	m_reportService = reportService;
+   }
+	
+	
 
 }

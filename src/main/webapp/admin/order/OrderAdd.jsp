@@ -13,7 +13,7 @@
 		</script>
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
-				href="index.action">首页</a></li>
+				href="index.do">首页</a></li>
 			<li>店铺管理</li>
 			<li class="active">新增订单信息</li>
 		</ul>
@@ -32,10 +32,12 @@
 				<td width="20%" style="text-align: right;"><strong
 					class="text-success">时间</strong></td>
 				<td>
-		           <input name="order.period"  id="datetimepicker1"  class="{required:true,date:true}"
-		              data-format="yyyy-MM-dd" type="text"></input> <span class="add-on"> 
-								<i class="ace-icon fa fa-calendar"></i>
+				<div id="datetimepicker1" class="input-append date">
+		           <input name="order.period"    class="{required:true,date:true}"
+		              data-format="yyyy-MM-dd" type="text"></input> <span class="add-on">
+		              <i class="ace-icon fa fa-calendar"></i>
 		           </span>
+		        </div>
 				</td>
 			</tr>
 			<tr>
@@ -105,12 +107,7 @@
 		$('#shopMenu').addClass("active open");
 		$('#orderList').addClass("active");
 		$("#form").validate();
-		
-		$("#datetimepicker1").datepicker({
-			showOtherMonths: true,
-			selectOtherMonths: false,
-			dateFormat: 'yy-mm-dd'
-		});
+		$('#datetimepicker1').datetimepicker();
 	});
 </script>
 

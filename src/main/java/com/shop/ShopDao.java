@@ -17,14 +17,6 @@ public class ShopDao {
 		return m_baseDao.delete("shop.delete", id);
 	}
 
-	public Shop findByNamePassword(String shopName, String password) {
-		Map<String, String> pars = new HashMap<String, String>();
-
-		pars.put("shopName", shopName);
-		pars.put("password", password);
-		return (Shop) m_baseDao.queryForObject("shop.findByName", pars);
-	}
-
 	public Shop findByPK(int id) {
 		return (Shop) m_baseDao.queryForObject("shop.findById", id);
 	}

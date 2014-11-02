@@ -35,7 +35,7 @@ public class MenuAction extends PagedAction {
 
 	@Override
 	public String getActionModule() {
-		return Modules.s_menu_model;
+		return Modules.s_menu_module;
 	}
 
 	public Menu getMenu() {
@@ -47,7 +47,7 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuAdd() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_add));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_add));
 
 		if (auth != null) {
 			return auth.getName();
@@ -69,14 +69,14 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuAddSubmit() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_add));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_add));
 		if (auth != null) {
 			return auth.getName();
 		}
 		try {
 			int id = m_menuService.insertMenu(m_menu);
 			if (id > 0) {
-				Log log = createLog(Modules.s_menu_model, Operation.s_operation_add, m_menu);
+				Log log = createLog(Modules.s_menu_module, Operation.s_operation_add, m_menu);
 
 				m_logService.insertLog(log);
 				return SUCCESS;
@@ -90,7 +90,7 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuDelete() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_delete));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_delete));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -100,7 +100,7 @@ public class MenuAction extends PagedAction {
 		try {
 			int count = m_menuService.deleteMenu(m_menuId);
 			if (count > 0) {
-				Log log = createLog(Modules.s_menu_model, Operation.s_operation_delete, m_menuId);
+				Log log = createLog(Modules.s_menu_module, Operation.s_operation_delete, m_menuId);
 
 				m_logService.insertLog(log);
 				return SUCCESS;
@@ -114,7 +114,7 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuList() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_detail));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_detail));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -142,7 +142,7 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuUpdate() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_update));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_update));
 
 		if (auth != null) {
 			return auth.getName();
@@ -169,7 +169,7 @@ public class MenuAction extends PagedAction {
 	}
 
 	public String menuUpdateSubmit() {
-		Authority auth = checkAuthority(buildResource(Modules.s_menu_model, Operation.s_operation_update));
+		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_update));
 		if (auth != null) {
 			return auth.getName();
 		}
@@ -180,7 +180,7 @@ public class MenuAction extends PagedAction {
 		try {
 			int count = m_menuService.updateMenu(m_menu);
 			if (count > 0) {
-				Log log = createLog(Modules.s_menu_model, Operation.s_operation_update, m_menu);
+				Log log = createLog(Modules.s_menu_module, Operation.s_operation_update, m_menu);
 
 				m_logService.insertLog(log);
 				return SUCCESS;

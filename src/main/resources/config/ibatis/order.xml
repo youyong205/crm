@@ -43,7 +43,7 @@
 		</selectKey>
 	</insert>
 	<update id="order.update" parameterClass="order">
-		update orderInfo set oshopId=#shopId#,period=#period#,type=#type#,weather=#weather#,
+		update orderInfo set shopId=#shopId#,period=#period#,type=#type#,weather=#weather#,
 		money1=#money1#,money2=#money2#,money3=#money3#,tableNumber=#tableNumber#,number=#number#,
 		detail=#detail#,modifyDate=now()
 		where id=#id#
