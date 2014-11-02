@@ -1,0 +1,227 @@
+body {
+	font-family: arial, helvetica, sans-serif;
+	font-size: small;
+	background: white;
+	color: black;
+	margin: 4px;
+	padding: 0;
+}
+
+.space {
+	margin-left: 6px;
+}
+
+.title {
+	font-weight: normal;
+	background: white;
+	color: #08c;
+	text-align: center;
+}
+
+.even {
+	background-color: #f9f9f9;
+}
+
+th {
+	background: white;
+	color: #08c;
+	font: normal "TArial", "Helvetica", "sans-serif";
+	text-align: center;
+	font-size: 15px;
+}
+
+.select {
+	width: 160px;
+}
+
+.red {
+	color: red;
+}
+
+input,select,textarea,.uneditable-input {
+	width: auto;
+}
+
+select {
+	height: auto;
+}
+
+.left {
+	text-align: right;
+	padding-right: 15px;
+	color: #08c;
+}
+
+.nav-header {
+	font-size: 15px;
+}
+
+#adminMenu .nav-list  li  a {
+	padding: 0px 15px;
+}
+
+#adminMenu .nav li+.nav-header {
+	margin-top: 1px;
+}
+
+#adminMenu .nav-header {
+	padding: 3px 3px;
+}
+
+#adminMenu .nav-header {
+	padding: 0px 8px 0px 0px;
+}
+
+#adminMenu .nav .nav-child {
+	font-weight: bold;
+	font-size: 14px;
+}
+#adminMenu .nav .nav-child2 {
+	font-size: 13px;
+	padding-left:20px;
+}
+#adminMenu .nav .nav-child3 {
+	font-size: 12px;
+	padding-left:40px;
+}
+
+.well {
+	padding: 10px 10px 10px 19px;
+}
+
+.background-body .row-fluid .span2 {
+	width: 12%;
+}
+
+.background-body .row-fluid .span10 {
+	width: 85%;
+}
+
+label {
+	display: inline;
+	padding-left: 10px;
+}
+
+.error {
+	color: red;
+}
+
+select,textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],.uneditable-input
+	{
+	margin-bottom: 0px;
+}
+
+strong {
+	font-size: 15px;
+}
+
+.child-menu {
+	margin-left: 15px;
+}
+
+.margin-buttom {
+	margin: 0 0 5px;
+}
+
+.errorMessage {
+	font-size: 16px;
+	color: red;
+	list-style: none;
+}
+
+#field {
+	margin-left: .5em;
+	float: none;
+}
+
+#field,label {
+	float: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+
+br {
+	clear: both;
+}
+
+input {
+	border: 1px solid black;
+	margin-bottom: .5em;
+}
+
+input.error {
+	border: 1px solid red;
+}
+
+label.error {
+	background: url('../img/unchecked.gif') no-repeat;
+	padding-left: 16px;
+	margin-left: .3em;
+}
+
+label.valid {
+	background: url('../img/checked.gif') no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.btn-small {
+	padding: 0px 10px;
+}
+
+.span10 {
+	padding-top: 10px;
+}
+
+.fixed {
+	position: fixed;
+	left: 22px;
+	top: 45px;
+}
+
+.navbar,.breadcrumb {
+	margin-bottom: 5px;
+}
+
+.levelA {
+	color:green;
+	background:green;
+	display:-moz-inline-box;
+	display:inline-block;
+	width:60px;
+}
+
+.levelB {
+	color:blue;
+	background:blue;
+	display:-moz-inline-box;
+	display:inline-block;
+	width:60px;
+}
+
+.levelC {
+	color:yellow;
+	background:yellow;
+	display:-moz-inline-box;
+	display:inline-block;
+	width:60px;
+}
+
+.levelD {
+	color:orange;
+	background:orange;
+	display:-moz-inline-box;
+	display:inline-block;
+	width:60px;
+}
+
+.levelE {
+	color:red;
+	background:red;
+	display:-moz-inline-box;
+	display:inline-block;
+	width:60px;
+}
+.container{
+	width:1200px;	
+}

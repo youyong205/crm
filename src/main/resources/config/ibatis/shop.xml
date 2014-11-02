@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="shop" type="com.shop.Shop" />
+	<sql id="shop.columns">
+		id,bossId,name,address,area,rent,staff1,salary1,staff2,salary2,sales,purchase,interest,creationDate,modifyDate	
+	</sql>
+	<select id="shop.queryAllShops" resultClass="shop">
+		select
+		<include refid="shop.columns" />
+		from shop
+	</select>
+	<select id="shop.queryAllSize" resultClass="int">
+		select count(*) from shop
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="bossId" compareValue="0">
+                 bossId=#bossId#
+            </isGreaterThan>
+		</dynamic>
+	</select>
+	<select id="shop.queryLimitedShops" resultClass="shop">
+		select
+		<include refid="shop.columns" />
+		from shop
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="bossId" compareValue="0">
+                 bossId=#bossId#
+            </isGreaterThan>
+		</dynamic>
+		limit #start#,#size#
+	</select>
+	<select id="shop.findById" resultClass="shop" parameterClass="int">
+		select
+		<include refid="shop.columns" />
+		from shop where id=#id#
+	</select>
+	<insert id="shop.insert" parameterClass="shop">
+		insert into shop (<include refid="shop.columns" />) values
+		(#id#,#bossId#,#name#,#address#,#area#,#rent#,#staff1#,#salary1#,#staff2#,#salary2#,#sales#,#purchase#,#interest#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="shop.update" parameterClass="shop">
+		update shop set name=#name#,address=#address#,
+		area=#area#,rent=#rent#,staff1=#staff1#,salary1=#salary1#,
+		staff2=#staff2#,salary2=#salary2#,sales=#sales#,purchase=#purchase#,
+		interest=#interest#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="shop.delete" parameterClass="int">
+		delete from shop
+		where
+		id=#id#
+	</delete>
+</sqlMap>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="resource" extends="default">
+		<action name="resourceList" class="resourceAction" method="resourceList">
+			<result name="success">admin/resource/ResourceList.jsp</result>
+		</action>
+		<action name="resourceAdd" class="resourceAction" method="resourceAdd">
+			<result name="success">admin/resource/ResourceAdd.jsp</result>
+		</action>
+		<action name="resourceAddSubmit" class="resourceAction" method="resourceAddSubmit">
+			<result name="success" type="redirect">resourceList.action?index=${index}</result>
+		</action>
+		<action name="resourceUpdate" class="resourceAction" method="resourceUpdate" >
+			<result name="success">admin/resource/ResourceUpdate.jsp</result>
+		</action>
+		<action name="resourceDetail" class="resourceAction" method="resourceUpdate" >
+			<result name="success">admin/resource/ResourceDetail.jsp</result>
+		</action>
+		<action name="resourceUpdateSubmit" class="resourceAction" method="resourceUpdateSubmit">
+			<result name="success" type="redirect">resourceList.action?index=${index}</result>
+		</action>
+		<action name="resourceDelete" class="resourceAction" method="resourceDelete">
+			<result name="success" type="redirect">resourceList.action?index=${index}</result>
+		</action>
+	</package>	
+</struts>

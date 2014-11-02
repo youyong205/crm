@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="shop" extends="default">
+		<action name="shopList" class="shopAction" method="shopList">
+			<result name="success">admin/shop/ShopList.jsp</result>
+		</action>
+		<action name="shopAdd" class="shopAction" method="shopAdd">
+			<result name="success">admin/shop/ShopAdd.jsp</result>
+		</action>
+		<action name="shopAddSubmit" class="shopAction" method="shopAddSubmit">
+			<result name="success" type="redirect">shopList.action?index=${index}</result>
+		</action>
+		<action name="shopUpdate" class="shopAction" method="shopUpdate" >
+			<result name="success">admin/shop/ShopUpdate.jsp</result>
+		</action>
+		<action name="shopDetail" class="shopAction" method="shopUpdate" >
+			<result name="success">admin/shop/ShopDetail.jsp</result>
+		</action>
+		<action name="shopUpdateSubmit" class="shopAction" method="shopUpdateSubmit">
+			<result name="success" type="redirect">shopList.action?index=${index}</result>
+		</action>
+		<action name="shopDelete" class="shopAction" method="shopDelete">
+			<result name="success" type="redirect">shopList.action?index=${index}</result>
+		</action>
+	</package>	
+</struts>

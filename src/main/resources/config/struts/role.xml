@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="role" extends="default">
+		<action name="roleList" class="roleAction" method="roleList">
+			<result name="success">admin/role/RoleList.jsp</result>
+		</action>
+		<action name="roleAdd" class="roleAction" method="roleAdd">
+			<result name="success">admin/role/RoleAdd.jsp</result>
+		</action>
+		<action name="roleAddSubmit" class="roleAction" method="roleAddSubmit">
+			<result name="success" type="redirect">roleList.action?index=${index}</result>
+		</action>
+		<action name="roleUpdate" class="roleAction" method="roleUpdate" >
+			<result name="success">admin/role/RoleUpdate.jsp</result>
+		</action>
+		<action name="roleDetail" class="roleAction" method="roleUpdate" >
+			<result name="success">admin/role/RoleDetail.jsp</result>
+		</action>
+		<action name="roleUpdateSubmit" class="roleAction" method="roleUpdateSubmit">
+			<result name="success" type="redirect">roleList.action?index=${index}</result>
+		</action>
+		<action name="roleDelete" class="roleAction" method="roleDelete">
+			<result name="success" type="redirect">roleList.action?index=${index}</result>
+		</action>
+	</package>	
+</struts>

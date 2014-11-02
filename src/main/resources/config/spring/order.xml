@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="false" default-autowire="byName">
+	<bean id="orderDao" class="com.order.OrderDao">
+	</bean>
+	<bean id="orderService" class="com.order.OrderServiceImpl">
+	</bean>
+	<bean id="orderAction" class="com.order.OrderAction" scope="prototype">
+	</bean>
+</beans>  

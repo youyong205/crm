@@ -1,0 +1,293 @@
+<shield-tunnel name="迎宾三路隧道">
+	<检查记录>
+		<record time="123" type="日" project="bianxing,chengjiang,sou" jiancharen=""></record>
+	</检查记录>
+	<shield-section name="盾构段"></shield-section>
+	<shield-section name="盾构段" type="上行" id="xxx01">
+		<shiled-machine name="盾构机"  xinghao=""  descpiton="">
+			<boring name="推进"></boring>
+			<boring name="推进"></boring>
+			<pose name="姿态"></pose>
+			<pose name="姿态"></pose>
+		</shiled-machine>	
+		<shiled-machine></shiled-machine>
+		<lining name="衬砌环">
+			<lifecycle></lifecycle>
+		</lining>
+		<lining name="衬砌环">
+			<lining-lifecycle name="衬砌环生命周期">
+				<desgin name="设计">
+					<document name="设计文档"></document>
+					<document name="制作信息"></document>
+					<document></document>
+				</desgin>
+				<lining-construction name="衬砌环施工">
+						<lining-construction-process name="施工进度"></lining-construction-process>
+						<lining-construction-process name="施工进度"></lining-construction-process>
+						<lining-construction-pose name="施工姿态"></lining-construction-pose>
+						<lining-construction-pose name="施工姿态"></lining-construction-pose>
+						<lining-construction-quality name="质量控制"></lining-construction-quality>
+						<lining-construction-quality name="质量控制"></lining-construction-quality>
+				</lining-construction>	
+				<lining-detection>
+						<deformation name="变形"></deformation>
+						<deformation name="变形"></deformation>
+						<settlement name="沉降"></settlement>
+						<settlement name="沉降"></settlement>
+						<leakage name="渗透水"></leakage>
+						<leakage name="渗透水"></leakage>
+						<deterioration name="混凝土退化"></deterioration>
+						<deterioration name="混凝土退化"></deterioration>
+						<joint-openning name="接缝张开"></joint-openning>
+						<joint-openning name="接缝张开"></joint-openning>
+						<displacement name="错台错缝"></displacement>
+						<displacement name="错台错缝"></displacement>
+						<fissure name="裂缝"></fissure>
+						<fissure name="裂缝"></fissure>
+						<rusting name="锈蚀"></rusting>
+						<rusting name="锈蚀"></rusting>
+				</lining-detection>
+				<lining-maintenance>
+					<maintenance-record name="养护记录"></maintenance-record>
+				</lining-maintenance>
+			</lining-lifecycle>
+		</lining>
+		<sync-structure name="同步结构">
+			<rectangle-component name="口型构件">
+				<base-info name="基本信息">
+				</base-info>
+				<lifecycle name="生命周期">
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document name="制作信息"></document>
+						<document></document>
+					</desgin>
+					<rectangle-component-construction name="施工">
+						<rectangle-component-construction-process name="施工进度"></rectangle-component-construction-process>
+						<rectangle-component-construction-process name="施工进度"></rectangle-component-construction-process>
+					</rectangle-component-construction>
+					<rectangle-component-detection name="病害" type="" dec="" attachment=""></rectangle-component-detection>
+					<rectangle-component-maintenance name="养护"></rectangle-component-maintenance>
+				</lifecycle>
+			</rectangle-component>
+			<rectangle-component name="口型构件"></rectangle-component>
+			<plank name="车道板">
+				<base-info name="基本信息">
+				</base-info>
+				<plank-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<plank-construction name="车道板施工">
+						<plank-construction-process name="施工进度"></plank-construction-process>
+						<plank-construction-process name="施工进度"></plank-construction-process>
+					</plank-construction>	
+					<plank-detection name="检测"></plank-detection>	
+					<plank-maintenance name="养护"></plank-maintenance>
+				</plank-lifecycle>
+			 </plank>			
+			<plank name="车道板"></plank>	
+			<bracket name="牛腿">
+				<base-info name="基本信息">
+				</base-info>
+				<bracket-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<bracket-construction name="牛腿施工">
+						<bracket-construction-process name="施工进度"></bracket-construction-process>
+						<bracket-construction-process name="施工进度"></bracket-construction-process>
+						<bracket-construction-quality name="流变"></bracket-construction-quality>
+						<bracket-construction-quality name="流变"></bracket-construction-quality>
+					</bracket-construction>	
+					<bracket-detection name="检测"></bracket-detection>	
+					<bracket-maintenance name="养护"></bracket-maintenance>
+				</bracket-lifecycle>
+			</bracket>
+			<bracket name="牛腿"></bracket>
+			<saddle-weight name="压重块">
+				<base-info name="基本信息">
+				</base-info>
+				<saddle-weight-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<saddle-weight-construction name="压重块施工">
+						<saddle-weight-construction-process name="施工进度"></saddle-weight-construction-process>
+						<saddle-weight-construction-process name="施工进度"></saddle-weight-construction-process>
+						<saddle-weight-construction-quality name="质量控制"></saddle-weight-construction-quality>
+						<saddle-weight-construction-quality name="质量控制"></saddle-weight-construction-quality>
+					</saddle-weight-construction>	
+					<saddle-weight-detection name="检测"></saddle-weight-detection>	
+					<saddle-weight-maintenance name="养护"></saddle-weight-maintenance>
+				</saddle-weight-lifecycle>
+			</saddle-weight>		
+			<saddle-weight name="压重块"></saddle-weight>	
+			<flue-sheet name="烟道板">
+					<base-info name="基本信息">
+				</base-info>
+				<flue-sheet-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<flue-sheet-construction name="烟道板施工">
+						<flue-sheet-construction-process name="施工进度"></flue-sheet-construction-process>
+						<flue-sheet-construction-process name="施工进度"></flue-sheet-construction-process>
+						<flue-sheet-construction-quality name="质量控制"></flue-sheet-construction-quality>
+						<flue-sheet-construction-quality name="质量控制"></flue-sheet-construction-quality>
+					</flue-sheet-construction>	
+					<flue-sheet-detection name="检测"></flue-sheet-detection>	
+					<flue-sheet-maintenance name="养护"></flue-sheet-maintenance>
+				</flue-sheet-lifecycle>
+			</flue-sheet>	
+			<flue-sheet name="烟道板"></flue-sheet>	
+		</sync-structure>
+		<sync-structure name="同步结构"></sync-structure>
+		
+		<escape name="逃生">
+			<base-info name="基本信息">
+				</base-info>
+				<escape-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<escape-construction name="逃生施工">
+						<escape-construction-process name="施工进度"></escape-construction-process>
+						<escape-construction-process name="施工进度"></escape-construction-process>
+						<escape-construction-quality name="质量控制"></escape-construction-quality>
+						<escape-construction-quality name="质量控制"></escape-construction-quality>
+					</escape-construction>	
+					<escape-maintenance name="养护"></escape-maintenance>
+				</escape-lifecycle>
+		</escape>
+		<escape name="逃生"></escape>
+		<facility name="设备">
+			<base-info name="基本信息">
+				</base-info>
+				<facility-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<facility-construction-process name="施工进度"></facility-construction-process>
+					<facility-construction-process name="施工进度"></facility-construction-process>
+					<facility-construction-quality name="流变"></facility-construction-quality>
+					<facility-construction-quality name="流变"></facility-construction-quality>
+					<facility-construction-quality name="流变"></facility-construction-quality>
+					<facility-maintenance name="养护"></facility-maintenance>
+				</facility-lifecycle>
+		</facility>	
+		<facility name="设备"></facility>	
+		<line-pipe name="预埋管线">
+			<base-info name="基本信息">
+				</base-info>
+				<line-pipe-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+				</line-pipe-lifecycle>
+		</line-pipe>		
+		<line-pipe name="预埋管线"></line-pipe>		
+	</shield-section>
+	<connecting-passage name="联络通道">
+		<base-info name="基本信息">
+				</base-info>
+				<connecting-passage-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<connecting-passage-construction name="联络通道">
+						<connecting-passage-construction-process name="施工进度"></connecting-passage-construction-process>
+						<connecting-passage-construction-process name="施工进度"></connecting-passage-construction-process>
+						<connecting-passage-construction-quality name="质量控制"></connecting-passage-construction-quality>
+						<connecting-passage-construction-quality name="质量控制"></connecting-passage-construction-quality>
+					</connecting-passage-construction>	
+					<connecting-passage-detection name="检测"></connecting-passage-detection>	
+					<connecting-passage-maintenance name="养护"></connecting-passage-maintenance>
+				</connecting-passage-lifecycle>
+				</connecting-passage>
+	<connecting-passage name="联络通道"></connecting-passage>
+	<shaft name="工作井">
+		<base-info name="基本信息">
+				</base-info>
+				<shaft-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<shaft-construction name="工作井施工">
+						<shaft-construction-process name="施工进度"></shaft-construction-process>
+						<shaft-construction-process name="施工进度"></shaft-construction-process>
+						<shaft-construction-quality name="质量控制"></shaft-construction-quality>
+						<shaft-construction-quality name="质量控制"></shaft-construction-quality>
+					</shaft-construction>	
+					<shaft-detection name="检测"></shaft-detection>	
+					<shaft-maintenance name="养护"></shaft-maintenance>
+				</shaft-lifecycle>
+	</shaft>
+	<shaft name="工作井"></shaft>
+	<buried-section name="暗埋段">
+		<base-info name="基本信息">
+				</base-info>
+				<buried-section-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<buried-section-construction name="暗埋段施工">
+						<buried-section-construction-process name="施工进度"></buried-section-construction-process>
+						<buried-section-construction-process name="施工进度"></buried-section-construction-process>
+						<buried-section-construction-quality name="质量控制"></buried-section-construction-quality>
+						<buried-section-construction-quality name="质量控制"></buried-section-construction-quality>
+					</buried-section-construction>	
+					<buried-section-detection name="检测"></buried-section-detection>	
+					<buried-section-maintenance name="养护"></buried-section-maintenance>
+				</buried-section-lifecycle>
+	</buried-section>
+	<buried-section name="暗埋段"></buried-section>
+	<open-section name="敞开段">
+		<base-info name="基本信息">
+				</base-info>
+				<open-section-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<open-section-construction name="敞开段施工">
+						<open-section-construction-process name="施工进度"></open-section-construction-process>
+						<open-section-construction-process name="施工进度"></open-section-construction-process>
+						<open-section-construction-quality name="质量控制"></open-section-construction-quality>
+						<open-section-construction-quality name="质量控制"></open-section-construction-quality>
+					</open-section-construction>	
+					<open-section-detection name="检测"></open-section-detection>	
+					<open-section-maintenance name="养护"></open-section-maintenance>
+				</open-section-lifecycle>
+	</open-section>
+	<open-section name="敞开段"></open-section>
+	<connection-section name="接线段">
+		<base-info name="基本信息">
+				</base-info>
+				<connection-section-lifecycle>
+					<desgin name="设计">
+						<document name="设计文档"></document>
+						<document></document>
+					</desgin>
+					<connection-section-construction name="牛腿施工">
+						<connection-section-construction-process name="施工进度"></connection-section-construction-process>
+						<connection-section-construction-process name="施工进度"></connection-section-construction-process>
+						<connection-section-construction-quality name="质量控制"></connection-section-construction-quality>
+						<connection-section-construction-quality name="质量控制"></connection-section-construction-quality>
+					</connection-section-construction>	
+					<connection-section-detection name="检测"></connection-section-detection>	
+					<connection-section-maintenance name="养护"></connection-section-maintenance>
+				</connection-section-lifecycle>
+	</connection-section>
+	<connection-section name="接线段"></connection-section>
+</shield-tunnel>

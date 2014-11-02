@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="menu" type="com.menu.Menu" />
+
+	<sql id="menu.columns">
+		id,shopId,name,price,count,detail,creationDate,modifyDate
+	</sql>
+	<select id="menu.queryAllMenus" resultClass="menu">
+		select
+		<include refid="menu.columns" />
+		from menu
+	</select>
+	<select id="menu.queryAllSize" resultClass="int">
+		select count(*) from menu
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="shopId" compareValue="0">
+                 shopId=#shopId#
+            </isGreaterThan>
+		</dynamic>
+	</select>
+	<select id="menu.queryLimitedMenus" resultClass="menu">
+		select
+		<include refid="menu.columns" />
+		from menu
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="shopId" compareValue="0">
+                 shopId=#shopId#
+            </isGreaterThan>
+		</dynamic>
+		limit #start#,#size#
+	</select>
+	<select id="menu.findById" resultClass="menu" parameterClass="int">
+		select
+		<include refid="menu.columns" />
+		from menu where id=#id#
+	</select>
+	<insert id="menu.insert" parameterClass="menu">
+		insert into menu (<include refid="menu.columns" />) values
+		(#id#,#shopId#,#name#,#price#,#count#,#detail#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="menu.update" parameterClass="menu">
+		update menu set 
+		name=#name#,price=#price#,count=#count#,detail=#detail#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="menu.delete" parameterClass="int">
+		delete from menu
+		where
+		id=#id#
+	</delete>
+</sqlMap>

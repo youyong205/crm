@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="user" extends="default">
+		<action name="userList" class="userAction" method="userList">
+			<result name="success">admin/user/UserList.jsp</result>
+		</action>
+		<action name="userAdd" class="userAction" method="userAdd">
+			<result name="success">admin/user/UserAdd.jsp</result>
+		</action>
+		<action name="userAddSubmit" class="userAction" method="userAddSubmit">
+			<result name="success" type="redirect">userList.action?index=${index}</result>
+		</action>
+		<action name="userUpdate" class="userAction" method="userUpdate" >
+			<result name="success">admin/user/UserUpdate.jsp</result>
+		</action>
+		<action name="userDetail" class="userAction" method="userUpdate" >
+			<result name="success">admin/user/UserDetail.jsp</result>
+		</action>
+		<action name="userUpdateSubmit" class="userAction" method="userUpdateSubmit">
+			<result name="success" type="redirect">userList.action?index=${index}</result>
+		</action>
+		<action name="userDelete" class="userAction" method="userDelete">
+			<result name="success" type="redirect">userList.action?index=${index}</result>
+		</action>
+	</package>	
+</struts>

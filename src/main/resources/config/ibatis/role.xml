@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="role" type="com.role.Role" />
+	<typeAlias alias="roleResource" type="com.role.RoleResource" />
+
+	<sql id="roleResource.columns">
+		roleId,resourceId,creationDate
+	</sql>
+	<sql id="role.columns">
+		id,name,des,creationDate,modifyDate
+	</sql>
+	<select id="role.queryAllRoles" resultClass="role">
+		select
+		<include refid="role.columns" />
+		from role
+	</select>
+	<select id="role.queryAllSize" resultClass="int">
+		select count(*) from role
+	</select>
+	<select id="role.queryLimitedRoles" resultClass="role">
+		select
+		<include refid="role.columns" />
+		from role limit #start#,#size#
+	</select>
+	<select id="role.findById" resultClass="role" parameterClass="int">
+		select
+		<include refid="role.columns" />
+		from role where id=#id#
+	</select>
+	<insert id="role.insert" parameterClass="role">
+		insert into role (<include refid="role.columns" />) values
+		(#id#,#name#,#des#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="role.update" parameterClass="role">
+		update role set
+		name=#name#,des=#des#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="role.delete" parameterClass="int">
+		delete from role
+		where
+		id=#id#
+	</delete>
+	<select id="roleResource.queryRoleResources" resultClass="roleResource" parameterClass="int">
+		select
+		<include refid="roleResource.columns" />
+		from roleResource where roleId=#roleId#
+	</select>
+	<insert id="roleResource.insert" parameterClass="roleResource">
+		insert into roleResource (<include refid="roleResource.columns" />) values
+		(#roleId#,#resourceId#,now())
+	</insert>
+	<delete id="roleResource.deleteByRoleId" parameterClass="int">
+		delete from roleResource
+		where
+		roleId=#roleId#
+	</delete>
+</sqlMap>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="resource" type="com.resource.Resource" />
+
+	<sql id="resource.columns">
+		id,module,name,des,creationDate,modifyDate
+	</sql>
+	<select id="resource.queryAllResources" resultClass="resource">
+		select
+		<include refid="resource.columns" />
+		from resource
+	</select>
+	<select id="resource.queryAllSize" resultClass="int">
+		select count(*) from resource
+	</select>
+	<select id="resource.queryLimitedResources" resultClass="resource">
+		select
+		<include refid="resource.columns" />
+		from resource limit #start#,#size#
+	</select>
+	<select id="resource.findById" resultClass="resource" parameterClass="int">
+		select
+		<include refid="resource.columns" />
+		from resource where id=#id#
+	</select>
+	<insert id="resource.insert" parameterClass="resource">
+		insert into resource (<include refid="resource.columns" />) values
+		(#id#,#module#,#name#,#des#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="resource.update" parameterClass="resource">
+		update resource set module=#module#,
+		name=#name#,des=#des#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="resource.delete" parameterClass="int">
+		delete from resource
+		where
+		id=#id#
+	</delete>
+</sqlMap>

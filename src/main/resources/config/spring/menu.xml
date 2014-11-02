@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="false" default-autowire="byName">
+	<bean id="menuDao" class="com.menu.MenuDao">
+	</bean>
+	<bean id="menuService" class="com.menu.MenuServiceImpl">
+	</bean>
+	<bean id="menuAction" class="com.menu.MenuAction" scope="prototype">
+	</bean>
+</beans>  

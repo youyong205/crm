@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="order" type="com.order.Order" />
+
+	<sql id="order.columns">
+	id,shopId,period,type,weather,money1,money2,money3,tableNumber,number,detail,creationDate,modifyDate
+	</sql>
+	<select id="order.queryAllOrders" resultClass="order">
+		select
+		<include refid="order.columns" />
+		from orderInfo
+	</select>
+	<select id="order.queryAllSize" resultClass="int">
+		select count(*) from orderInfo
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="shopId" compareValue="0">
+                 shopId=#shopId#
+            </isGreaterThan>
+		</dynamic>
+	</select>
+	<select id="order.queryLimitedOrders" resultClass="order">
+		select
+		<include refid="order.columns" />
+		from orderInfo
+		<dynamic prepend="WHERE">
+            <isGreaterThan prepend="AND" property="shopId" compareValue="0">
+                 shopId=#shopId#
+            </isGreaterThan>
+		</dynamic>
+		 order by id desc  limit #start#,#size#
+	</select>
+	<select id="order.findById" resultClass="order" parameterClass="int">
+		select
+		<include refid="order.columns" />
+		from orderInfo where id=#id#
+	</select>
+	<insert id="order.insert" parameterClass="order">
+		insert into orderInfo (<include refid="order.columns" />) values
+		(#id#,#shopId#,#period#,#type#,#weather#,#money1#,#money2#,#money3#,#tableNumber#,#number#,#detail#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="order.update" parameterClass="order">
+		update orderInfo set oshopId=#shopId#,period=#period#,type=#type#,weather=#weather#,
+		money1=#money1#,money2=#money2#,money3=#money3#,tableNumber=#tableNumber#,number=#number#,
+		detail=#detail#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="order.delete" parameterClass="int">
+		delete from orderInfo
+		where
+		id=#id#
+	</delete>
+</sqlMap>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="log" type="com.log.Log" />
+
+	<sql id="log.columns">
+		id,module,operation,userId,detail,creationDate
+	</sql>
+	<select id="log.queryAllLogs" resultClass="log">
+		select
+		<include refid="log.columns" />
+		from log order by id desc
+	</select>
+	<select id="log.queryAllSize" resultClass="int">
+		select count(*) from
+		log
+	</select>
+	<select id="log.queryLimitedLogs" resultClass="log">
+		select
+		<include refid="log.columns" />
+		from log order by id desc limit #start#,#size#
+	</select>
+	<select id="log.querySizeByModuleOperation" resultClass="int">
+		select
+		count(*) from log 
+		<dynamic prepend="WHERE">
+            <isPropertyAvailable prepend="AND" property="module" >
+                 module=#module#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="AND" property="operation" >
+                 operation=#operation#
+            </isPropertyAvailable>
+   		</dynamic>
+	</select>
+	<select id="log.queryLimitedLogsByModuleOperation" resultClass="log">
+		select
+		<include refid="log.columns" />
+		from log 
+		<dynamic prepend="WHERE">
+            <isPropertyAvailable prepend="AND" property="module" >
+                module=#module#
+            </isPropertyAvailable>
+            <isPropertyAvailable prepend="AND" property="operation" >
+                operation=#operation#
+            </isPropertyAvailable>
+   		</dynamic>
+   		order by id
+		desc limit #start#,#size#
+	</select>
+	<select id="log.findById" resultClass="log" parameterClass="int">
+		select
+		<include refid="log.columns" />
+		from log where id=#id#
+	</select>
+	<insert id="log.insert" parameterClass="log">
+		insert into log (
+		<include refid="log.columns" />
+		) values
+		(#id#,#module#,#operation#,#userId#,#detail#,now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+</sqlMap>

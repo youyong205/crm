@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<constant name="struts.custom.i18n.resources" value="resource.messageResource"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="Struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="Struts.multipart.parse" value="jakarta"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<constant name="struts.multipart.maxSize" value="40480000"></constant>
+	<constant name="struts.action.extension" value="do,action" />
+
+	<include file="config/struts/log.xml"></include>
+	<include file="config/struts/user.xml"></include>
+	<include file="config/struts/role.xml"></include>
+	<include file="config/struts/resource.xml"></include>
+	<include file="config/struts/login.xml"></include>
+	<include file="config/struts/shop.xml"></include>
+	<include file="config/struts/menu.xml"></include>
+	<include file="config/struts/order.xml"></include>
+	<package name="default" extends="struts-default">
+		<global-results>
+			<result name="success">admin/SystemSuccess.jsp</result>
+			<result name="sql">admin/SystemError.jsp</result>
+			<result name="root">admin/SystemError.jsp</result>
+			<result name="relogin">admin/login/home.jsp?requestUrl=${requestUrl}</result>
+			<result name="login">admin/login/home.jsp?requestUrl=${requestUrl}</result>
+			<result name="noAuth">admin/login/noauth.jsp</result>
+			<result name="input">admin/SystemError.jsp</result>
+			<result name="error">admin/SystemError.jsp</result>
+			<result name="exception">admin/SystemError.jsp</result>
+		</global-results>
+	</package>
+	<package name="main" extends="struts-default">
+		<global-results>
+			<result name="success">user/SystemSuccess.jsp</result>
+			<result name="sql">user/SystemError.jsp</result>
+			<result name="root">user/SystemError.jsp</result>
+			<result name="relogin">user/login/home.jsp?requestUrl=${requestUrl}</result>
+			<result name="login">user/login/home.jsp?requestUrl=${requestUrl}</result>
+			<result name="noAuth">user/login/noauth.jsp</result>
+			<result name="input">user/SystemError.jsp</result>
+			<result name="error">user/SystemError.jsp</result>
+			<result name="exception">user/SystemError.jsp</result>
+		</global-results>
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="menu" extends="default">
+		<action name="menuList" class="menuAction" method="menuList">
+			<result name="success">admin/menu/MenuList.jsp</result>
+		</action>
+		<action name="menuAdd" class="menuAction" method="menuAdd">
+			<result name="success">admin/menu/MenuAdd.jsp</result>
+		</action>
+		<action name="menuAddSubmit" class="menuAction" method="menuAddSubmit">
+			<result name="success" type="redirect">menuList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+		<action name="menuUpdate" class="menuAction" method="menuUpdate" >
+			<result name="success">admin/menu/MenuUpdate.jsp</result>
+		</action>
+		<action name="menuDetail" class="menuAction" method="menuUpdate" >
+			<result name="success">admin/menu/MenuDetail.jsp</result>
+		</action>
+		<action name="menuUpdateSubmit" class="menuAction" method="menuUpdateSubmit">
+			<result name="success" type="redirect">menuList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+		<action name="menuDelete" class="menuAction" method="menuDelete">
+			<result name="success" type="redirect">menuList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+	</package>	
+</struts>

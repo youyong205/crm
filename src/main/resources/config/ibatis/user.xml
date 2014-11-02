@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="user" type="com.user.User" />
+	<typeAlias alias="userRole" type="com.user.UserRole" />
+
+	<sql id="user.columns">
+		id,userName,password,realName,role,creationDate,modifyDate
+	</sql>
+	<sql id="userRole.columns">
+		userId,roleId,creationDate
+	</sql>
+	<select id="user.queryAllUsers" resultClass="user">
+		select
+		<include refid="user.columns" />
+		from user
+	</select>
+	<select id="user.queryAllSize" resultClass="int">
+		select count(*) from user
+	</select>
+	<select id="user.queryLimitedUsers" resultClass="user">
+		select
+		<include refid="user.columns" />
+		from user limit #start#,#size#
+	</select>
+	<select id="user.findByName" resultClass="user" >
+		select
+		<include refid="user.columns" />
+		from user where userName=#userName# and password=#password#
+	</select>
+	<select id="user.findById" resultClass="user" parameterClass="int">
+		select
+		<include refid="user.columns" />
+		from user where id=#id#
+	</select>
+	<insert id="user.insert" parameterClass="user">
+		insert into user (<include refid="user.columns" />) values
+		(#id#,#userName#,#password#,#realName#,#role#,now(),now())
+		<selectKey resultClass="int" keyProperty="id">
+             <![CDATA[   select last_insert_id() as id  ]]>
+		</selectKey>
+	</insert>
+	<update id="user.update" parameterClass="user">
+		update user set
+		password=#password#,realName=#realName#,role=#role#,modifyDate=now()
+		where id=#id#
+	</update>
+	<delete id="user.delete" parameterClass="int">
+		delete from user
+		where
+		id=#id#
+	</delete>
+	<select id="userRole.queryUserRoles" resultClass="userRole" parameterClass="int">
+		select
+		<include refid="userRole.columns" />
+		from userRole where userId=#userId#
+	</select>
+	<insert id="userRole.insert" parameterClass="userRole">
+		insert into userRole (<include refid="userRole.columns" />) values
+		(#userId#,#roleId#,now())
+	</insert>
+	<delete id="userRole.deleteByUserId" parameterClass="int">
+		delete from userRole
+		where
+		userId=#userId#
+	</delete>
+</sqlMap>

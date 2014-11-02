@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="order" extends="default">
+		<action name="orderList" class="orderAction" method="orderList">
+			<result name="success">admin/order/OrderList.jsp</result>
+		</action>
+		<action name="orderAdd" class="orderAction" method="orderAdd">
+			<result name="success">admin/order/OrderAdd.jsp</result>
+		</action>
+		<action name="orderAddSubmit" class="orderAction" method="orderAddSubmit">
+			<result name="success" type="redirect">orderList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+		<action name="orderUpdate" class="orderAction" method="orderUpdate" >
+			<result name="success">admin/order/OrderUpdate.jsp</result>
+		</action>
+		<action name="orderDetail" class="orderAction" method="orderUpdate" >
+			<result name="success">admin/order/OrderDetail.jsp</result>
+		</action>
+		<action name="orderUpdateSubmit" class="orderAction" method="orderUpdateSubmit">
+			<result name="success" type="redirect">orderList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+		<action name="orderDelete" class="orderAction" method="orderDelete">
+			<result name="success" type="redirect">orderList.action?index=${index}&amp;shopId=${shopId}</result>
+		</action>
+	</package>	
+</struts>
