@@ -38,17 +38,4 @@
 			<result name="exception">admin/SystemError.jsp</result>
 		</global-results>
 	</package>
-	<package name="main" extends="struts-default">
-		<global-results>
-			<result name="success">user/SystemSuccess.jsp</result>
-			<result name="sql">user/SystemError.jsp</result>
-			<result name="root">user/SystemError.jsp</result>
-			<result name="relogin">user/login/home.jsp?requestUrl=${requestUrl}</result>
-			<result name="login">user/login/home.jsp?requestUrl=${requestUrl}</result>
-			<result name="noAuth">user/login/noauth.jsp</result>
-			<result name="input">user/SystemError.jsp</result>
-			<result name="error">user/SystemError.jsp</result>
-			<result name="exception">user/SystemError.jsp</result>
-		</global-results>
-	</package>
 </struts>

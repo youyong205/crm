@@ -1,16 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/WEB-INF/tld/struts-tags.tld"%>
+<%@ taglib prefix="t" uri="/WEB-INF/tld/struts-privilege.tld"%>
+<%@ taglib prefix="a" uri="/WEB-INF/app.tld"%>
 
-<!DOCTYPE html>
-<head>
-<title>软土盾构隧道后台管理系统</title>
-
-<link href="css/bootstrap.min.css" rel="stylesheet" user="screen">
-<link rel='stylesheet' type='text/css' href='css/admin.css' />
-<script src="js/jquery-1.7.1.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js"></script>
-</head>
-<body>
+<a:body>
   </br>
   </br>
   <div class="container-fluid background-body" >
@@ -20,5 +13,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+</a:body>

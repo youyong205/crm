@@ -19,8 +19,14 @@ public interface UserService {
 	public int queryAllSize();
 
 	public List<User> queryLimitedUsers(int start, int size);
+	
+	public int queryAllSize(int shopId);
+
+	public List<User> queryLimitedUsers(int start, int size,int shopId);
 
 	public List<UserRole> queryUserRoles(int userId);
+	
+	
 
 	public int updateUser(User user);
 

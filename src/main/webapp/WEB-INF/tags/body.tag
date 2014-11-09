@@ -1,5 +1,6 @@
 <%@ tag trimDirectiveWhitespaces="true" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/WEB-INF/tld/struts-tags.tld"%>
+<%@ taglib prefix="t" uri="/WEB-INF/tld/struts-privilege.tld"%>
 <html lang="en"><head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta charset="utf-8">
@@ -137,24 +138,29 @@
 				class="menu-icon fa fa-desktop"></i> <span class="menu-text">店铺管理</span>
 		    <b class="arrow fa fa-angle-down"></b>
 		    </a> <b class="arrow"></b>
-
 			<ul class="submenu">
-				<li id="reportList" class=""><a href="index.do"> <i
-						class="menu-icon fa fa-caret-right"></i> 营业信息
-				</a> <b class="arrow"></b></li>
-				<li id="shopList" class=""><a href="shopList.do"> <i
+				<t:privilege res="报表模块:详情"><li id="reportToday" class=""><a href="today.do"> <i
+						class="menu-icon fa fa-caret-right"></i> 今日营业
+				</a> <b class="arrow"></b></li><li id="reportList" class=""><a href="reportHistory.do"> <i
+						class="menu-icon fa fa-caret-right"></i> 历史报表
+				</a> <b class="arrow"></b></li></t:privilege>
+						
+				<t:privilege res="商户模块:详情">
+						<li id="shopList" class=""><a href="shopList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 店铺信息
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
+				<t:privilege res="菜品模块:详情">
 				<li id="menuList" class="menuList"><a href='menuList.do?shopId=<s:property value="shopId"/>&index=<s:property value="index"/>'> <i
-						class="menu-icon fa fa-caret-right"></i> 菜品管理
-				</a> <b class="arrow"></b></li>
-
-				<li id="memberList" class=""><a href=""> <i
+						class="menu-icon fa fa-caret-right"></i> 菜单管理
+				</a> <b class="arrow"></b></li></t:privilege>
+				<t:privilege res="用户模块:详情">
+				<li id="userList" ><a href="userList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 员工管理
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
+				<t:privilege res="订单模块:详情">
 				<li id="orderList" class=""><a href='orderList.do?shopId=<s:property value="shopId"/>&index=<s:property value="index"/>'> <i
 						class="menu-icon fa fa-caret-right"></i> 订单管理
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
 			</ul></li>
 		<li id="systemMenu" class="hsub"><a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-tag"></i> <span class="menu-text">系统管理</span>
@@ -162,18 +168,18 @@
 			</a> <b class="arrow"></b>
 
 			<ul class="submenu">
-				<li id="userList" ><a href="userList.do"> <i
-						class="menu-icon fa fa-caret-right"></i> 用户管理
-				</a> <b class="arrow"></b></li>
+				<t:privilege res="角色模块:详情">
 				<li id="roleList" ><a href="roleList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 角色管理
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
+				<t:privilege res="资源模块:详情">
 				<li id="resourceList" ><a href="resourceList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 资源管理
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
+				<t:privilege res="日志模块:详情">
 				<li id="logList" ><a href="logList.do"> <i
 						class="menu-icon fa fa-caret-right"></i> 操作日志
-				</a> <b class="arrow"></b></li>
+				</a> <b class="arrow"></b></li></t:privilege>
 			</ul></li>
 		</ul>
 				
@@ -367,7 +373,7 @@
 		padding-left: 16px;
 		margin-left: .3em;
 	}
-	table{font-size:small;margin-left:2px;}
+	table{font-size:small;}
 	#breadcrumbs{margin-left:2px;}
 </style>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>

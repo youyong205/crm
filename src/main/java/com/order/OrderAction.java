@@ -14,7 +14,6 @@ import com.report.Report;
 import com.report.ReportService;
 import com.shop.Shop;
 import com.shop.ShopService;
-import com.user.User;
 
 public class OrderAction extends PagedAction {
 
@@ -29,6 +28,8 @@ public class OrderAction extends PagedAction {
 	private int m_orderId;
 
 	private int m_shopId;
+
+	private String m_tag;
 
 	@Autowired
 	private OrderService m_orderService;
@@ -61,22 +62,13 @@ public class OrderAction extends PagedAction {
 		return SUCCESS;
 	}
 
-	public List<Shop> queryShop() {
-		User user = queryUserInfo();
-		int userId = user.getId();
-
-		if (isAdmin(user.getUserName())) {
-			userId = 0;
-		}
-		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
-
-		return shops;
-	}
-
 	public String orderAddSubmit() {
 		Authority auth = checkAuthority(buildResource(Modules.s_order_module, Operation.s_operation_add));
 		if (auth != null) {
 			return auth.getName();
+		}
+		if (!checkShop(m_order.getShopId())) {
+			return Authority.NoAuth.getName();
 		}
 		try {
 			int id = m_orderService.insertOrder(m_order);
@@ -92,7 +84,12 @@ public class OrderAction extends PagedAction {
 				Log log = createLog(Modules.s_order_module, Operation.s_operation_add, m_order);
 
 				m_logService.insertLog(log);
-				return SUCCESS;
+
+				if ("index".equals(m_tag)) {
+					return "today";
+				} else {
+					return SUCCESS;
+				}
 			} else {
 				return ERROR;
 			}
@@ -234,9 +231,15 @@ public class OrderAction extends PagedAction {
 	}
 
 	public void setReportService(ReportService reportService) {
-   	m_reportService = reportService;
-   }
-	
-	
+		m_reportService = reportService;
+	}
+
+	public String getTag() {
+		return m_tag;
+	}
+
+	public void setTag(String tag) {
+		m_tag = tag;
+	}
 
 }

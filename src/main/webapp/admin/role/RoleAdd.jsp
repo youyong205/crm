@@ -26,9 +26,7 @@
 					class="{required:true,maxlength:64}" /></td>
 			</tr>
 			<s:iterator value="moduleResources" status="vs">
-				<s:if test="#vs.index % 2 ==0">
 					</tr>
-				</s:if>
 				<td style="text-align: right;"><strong
 					class="text-success text-right"><s:property value="key" /></strong></td>
 				<td><s:iterator value="value.resources">
@@ -38,13 +36,11 @@
 						<label for="<s:property value="key"/>_<s:property value="name"/>"><s:property
 								value="name" /></label>
 					</s:iterator></td>
-				<s:if test="#vs.index % 2 ==1 ||#vs.last">
 					</tr>
-				</s:if>
 			</s:iterator>
 			<tr>
 				<td style="text-align: right;"><strong class="text-success">备注信息</strong></td>
-				<td colspan='3'><textarea type="text" rows="5" cols="80"
+				<td colspan='3'><textarea type="text" 
 						name="role.des" class="{maxlength:512}"></textarea></td>
 			</tr>
 			<tr>

@@ -3,7 +3,7 @@ CREATE TABLE  `user` (
   `userName` varchar(64) NOT NULL  COMMENT '登陆名',
   `password` varchar(64) NOT NULL COMMENT '用户密码',
   `realName` varchar(64) NOT NULL COMMENT '真实姓名',
-  `role` int(11) NOT NULL COMMENT '1/管理员,2/数据录入员,３/普通用户',
+  `shopId` int(11) NOT NULL COMMENT '搜索商户ID',
   `creationDate` datetime NOT NULL COMMENT '创建时间',
   `modifyDate` datetime NOT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`),
@@ -110,11 +110,44 @@ CREATE TABLE  `report` (
   `number` int(11) NOT NULL  COMMENT '人数',
   `creationDate` datetime NOT NULL COMMENT '创建时间',
   `modifyDate` datetime NOT NULL COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `shopId_period` (`shopId`,`period`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='报表基本信息';
 
 
-
+insert into resource values(1,"用户模块","详情","",now(),now());
+insert into resource values(2,"用户模块","新增","",now(),now());
+insert into resource values(3,"用户模块","编辑","",now(),now());
+insert into resource values(4,"用户模块","删除","",now(),now());
+insert into resource values(5,"角色模块","详情","",now(),now());
+insert into resource values(6,"角色模块","新增","",now(),now());
+insert into resource values(7,"角色模块","编辑","",now(),now());
+insert into resource values(8,"角色模块","删除","",now(),now());
+insert into resource values(9,"资源模块","详情","",now(),now());
+insert into resource values(10,"资源模块","新增","",now(),now());
+insert into resource values(11,"资源模块","编辑","",now(),now());
+insert into resource values(12,"资源模块","删除","",now(),now());
+insert into resource values(13,"日志模块","详情","",now(),now());
+insert into resource values(14,"日志模块","新增","",now(),now());
+insert into resource values(15,"日志模块","编辑","",now(),now());
+insert into resource values(16,"日志模块","删除","",now(),now());
+insert into resource values(17,"商户模块","详情","",now(),now());
+insert into resource values(18,"商户模块","新增","",now(),now());
+insert into resource values(19,"商户模块","编辑","",now(),now());
+insert into resource values(21,"商户模块","删除","",now(),now());
+insert into resource values(22,"菜单模块","详情","",now(),now());
+insert into resource values(23,"菜单模块","新增","",now(),now());
+insert into resource values(24,"菜单模块","编辑","",now(),now());
+insert into resource values(25,"菜单模块","删除","",now(),now());
+insert into resource values(26,"订单模块","详情","",now(),now());
+insert into resource values(27,"订单模块","新增","",now(),now());
+insert into resource values(28,"订单模块","编辑","",now(),now());
+insert into resource values(29,"订单模块","删除","",now(),now());
+insert into resource values(30,"报表模块","详情","",now(),now());
+insert into resource values(31,"员工模块","详情","",now(),now());
+insert into resource values(32,"员工模块","新增","",now(),now());
+insert into resource values(33,"员工模块","编辑","",now(),now());
+insert into resource values(34,"员工模块","删除","",now(),now());
 
 
 

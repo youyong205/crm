@@ -1,5 +1,6 @@
 package com.order;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,11 @@ public class OrderDao {
 
 	public void setBaseDao(BaseDao baseDao) {
 		m_baseDao = baseDao;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List queryOrdersByDate(Date date){
+		return m_baseDao.queryForList("order.queryOrdersByDate", date);
 	}
 
 	public int updateOrder(Order order) {

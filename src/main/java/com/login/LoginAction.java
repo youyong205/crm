@@ -36,8 +36,6 @@ public class LoginAction extends PagedAction {
 	@Autowired
 	private ResourceService m_resourceService;
 
-	private String m_role;
-
 	private static final String USER = "user";
 
 	public static final String s_login_error = "用户名密码输入错误";
@@ -58,6 +56,7 @@ public class LoginAction extends PagedAction {
 
 				for (Resource resource : all) {
 					String key = resource.getModule() + ":" + resource.getName();
+
 					resources.put(key, resource);
 				}
 			}
@@ -81,27 +80,17 @@ public class LoginAction extends PagedAction {
 			}
 			user.setResources(resources);
 			m_session.put(USER, user);
+
+			m_logger.info("====" + ((User) m_session.get(USER)).getUserName() + "=====");
 			m_logger.info(String.format("User %s login", user.getRealName()));
 
 			if (m_requestUrl != null && m_requestUrl.length() > 0) {
-				if ("user".equals(m_role)) {
-					return "userRedirect";
-				} else {
-					return "adminRedirect";
-				}
-			}
-			if (m_role != null) {
-				return m_role;
+				return "redirect";
 			} else {
 				return SUCCESS;
 			}
 		} else {
-			this.addActionError(s_login_error);
-			if (m_role == null) {
-				return m_role + "Error";
-			} else {
-				return "userError";
-			}
+			return ERROR;
 		}
 	}
 
@@ -111,11 +100,7 @@ public class LoginAction extends PagedAction {
 		if (user != null) {
 			m_logger.info(String.format("User %s login out", user.getRealName()));
 		}
-		if (m_role != null) {
-			return m_role;
-		} else {
-			return SUCCESS;
-		}
+		return SUCCESS;
 	}
 
 	public void setPassword(String password) {
@@ -124,10 +109,6 @@ public class LoginAction extends PagedAction {
 
 	public void setResourceService(ResourceService resourceService) {
 		m_resourceService = resourceService;
-	}
-
-	public void setRole(String role) {
-		m_role = role;
 	}
 
 	public void setRoleService(RoleService roleService) {

@@ -5,7 +5,7 @@
 
 <a:body>
 	<div class="text-center">
-	  		<a class='btn btn-danger' href="${requestUrl}"><span id="tS">4 秒后</span>返回上次请求页面</a>
+	  		<a class='btn btn-danger' href="${requestUrl}">返回上次请求页面</a>
 	  	</div>
 </a:body>
 <script type="text/javascript">
@@ -19,6 +19,5 @@
 		all--;
 	}
 	var all = 3;
-	if (all > 0) window.setInterval("timeDesc();", 1000);
 </script>
 

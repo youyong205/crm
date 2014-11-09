@@ -11,12 +11,21 @@
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
 				href="index.do">首页</a></li>
-			<li>系统管理</li>
-			<li class="active">新增用户</li>
+			<li>店铺管理</li>
+			<li class="active">新增员工</li>
 		</ul>
 	</div>
 	<form action="userAddSubmit.do" id="form" method="post">
 		<table class="table table-striped table-bordered table-condensed">
+			<input type="hidden" name="shopId"
+					value="<s:property value="shopId"/>" />
+			<tr>
+				<td style="text-align: right;"><strong
+					class="text-success">商户名</strong></td>
+				<td><s:select name="user.shopId" list="shops"  listKey="id" listValue="name"  value="shopId"
+						theme="simple">
+					</s:select></td>
+			</tr>
 			<tr>
 				<td width="20%"  style="text-align: right;"><strong class="text-success">用户名</strong></td>
 				<td><input type="text" name="user.userName"
@@ -49,8 +58,7 @@
 </a:body>
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#systemMenu').addClass("active");
-	$('#systemMenu').addClass("open");
+	$('#shopMenu').addClass("active open");
 	$('#userList').addClass("active");
 	$("#form").validate();
 });

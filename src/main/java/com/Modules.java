@@ -18,4 +18,6 @@ public class Modules {
 
 	public static String s_report_module = "报表模块";
 
+	public static String s_employee_module ="员工模块";
+
 }

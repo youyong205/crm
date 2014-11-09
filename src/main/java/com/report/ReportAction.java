@@ -15,6 +15,8 @@ import com.Operation;
 import com.PagedAction;
 import com.TimeHelper;
 import com.TimeLineChart;
+import com.order.Order;
+import com.order.OrderService;
 import com.shop.Shop;
 import com.shop.ShopService;
 import com.user.User;
@@ -37,6 +39,11 @@ public class ReportAction extends PagedAction {
 
 	@Autowired
 	private ReportService m_reportService;
+
+	@Autowired
+	private OrderService m_orderService;
+
+	private List<Order> m_orders;
 
 	private TimeLineChart m_chart1 = new TimeLineChart();
 
@@ -69,6 +76,32 @@ public class ReportAction extends PagedAction {
 		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
 
 		return shops;
+	}
+
+	public String reportToday() {
+		Authority auth = checkAuthority(buildResource(Modules.s_report_module, Operation.s_operation_detail));
+		if (auth != null) {
+			return auth.getName();
+		}
+		if (m_start == null) {
+			m_start = TimeHelper.getCurrentDay();
+		}
+		if (m_end == null) {
+			m_end = TimeHelper.getCurrentDay();
+		}
+		m_shops = queryShop();
+
+		if (m_shopId == 0 && m_shops.size() > 0) {
+			m_shopId = m_shops.get(0).getId();
+		}
+		Date current = TimeHelper.getCurrentDay();
+		List<Report> retry = m_reportService.queryByShopId(m_shopId, current, current);
+
+		if (retry.size() > 0) {
+			m_report = retry.get(0);
+		}
+		m_orders = m_orderService.queryOrdersByDate(current);
+		return SUCCESS;
 	}
 
 	public String reportIndex() {
@@ -188,6 +221,18 @@ public class ReportAction extends PagedAction {
 
 	public TimeLineChart getChart3() {
 		return m_chart3;
+	}
+
+	public void setOrderService(OrderService orderService) {
+		m_orderService = orderService;
+	}
+
+	public void setOrders(List<Order> orders) {
+		m_orders = orders;
+	}
+
+	public List<Order> getOrders() {
+		return m_orders;
 	}
 
 }

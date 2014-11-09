@@ -116,6 +116,7 @@
 		$('#type').val('<s:property value="order.type"/>');
 		$('#weather').val('<s:property value="order.weather"/>');
 		$('#datetimepicker1').datetimepicker();
+		$("#form").validate();
 	});
 </script>
 

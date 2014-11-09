@@ -5,13 +5,9 @@
 <struts>
 	<package name="login" extends="default">
 		<action name="login" class="loginAction" method="login">
-			<result name="adminRedirect">/admin/login/back.jsp</result>
-			<result name="userRedirect">/user/login/back.jsp</result>
-			<result type="redirect">userList.action</result>
-			<result name="admin" type="redirect">userList.action</result>
-			<result name="user" type="redirect">userList.action</result>
-			<result name="adminError">admin/login/home.jsp</result>
-			<result name="userError">user/login/home.jsp</result>
+			<result name="success" type="redirect">today.action</result>
+			<result name="redirect">admin/login/back.jsp</result>
+			<result name="error">admin/login/error.jsp</result>
 		</action>
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success">admin/login/home.jsp</result>

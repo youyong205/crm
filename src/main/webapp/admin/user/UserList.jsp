@@ -12,10 +12,19 @@
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
 				href="index.do">首页</a></li>
-			<li>系统管理</li>
-			<li class="active">用户列表</li>
+			<li>店铺管理</li>
+			<li class="active">员工列表</li>
 		</ul>
 	</div>
+	<form class=" margin-buttom" action="userList.do" method="post">
+		<div style="padding-left:5px;padding-top:8px;"><strong>店铺</strong>
+			  	 <s:select name="shopId" id="shop"
+						list="shops"  listKey="id" listValue="name"  value="shopId"
+						theme="simple" >
+				 </s:select>
+			  <button type="submit" class="btn btn-success btn-sm">查询</button>
+			 </div>
+			  </form>
 	<table class="table table-striped table-bordered table-hover"
 		style="font-size: small">
 		<thead>
@@ -66,22 +75,22 @@
 	</table>
 	<div class="text-center">
 		<ul class="pagination">
-			<li><a href="?index=1">首页</a></li>
+			<li><a href="?shopId=<s:property value="shopId"/>&index=1">首页</a></li>
 			<s:iterator id="item" value="pageIndexs">
 				<s:if test="${item == index }">
-					<li class="disabled"><a href="?index=${item}">${item}</a></li>
+					<li class="disabled"><a href="?shopId=<s:property value="shopId"/>&index=${item}">${item}</a></li>
 				</s:if>
 				<s:else>
-					<li><a href="?index=${item}">${item}</a></li>
+					<li><a href="?shopId=<s:property value="shopId"/>&index=${item}">${item}</a></li>
 				</s:else>
 			</s:iterator>
-			<li><a href="?index=${totalPages}">末页</a></li>
+			<li><a href="?shopId=<s:property value="shopId"/>&index=${totalPages}">末页</a></li>
 		</ul>
 	</div>
 </a:body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#systemMenu').addClass("active open");
+		$('#shopMenu').addClass("active open");
 		$('#userList').addClass("active");
 	});
 </script>

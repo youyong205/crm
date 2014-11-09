@@ -12,7 +12,6 @@ import com.PagedAction;
 import com.log.Log;
 import com.shop.Shop;
 import com.shop.ShopService;
-import com.user.User;
 
 public class MenuAction extends PagedAction {
 
@@ -24,9 +23,9 @@ public class MenuAction extends PagedAction {
 
 	private List<Shop> m_shops;
 
-	private int m_menuId;
-
 	private int m_shopId;
+
+	private int m_menuId;
 
 	@Autowired
 	private MenuService m_menuService;
@@ -56,22 +55,13 @@ public class MenuAction extends PagedAction {
 		return SUCCESS;
 	}
 
-	public List<Shop> queryShop() {
-		User user = queryUserInfo();
-		int userId = user.getId();
-
-		if (isAdmin(user.getUserName())) {
-			userId = 0;
-		}
-		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
-
-		return shops;
-	}
-
 	public String menuAddSubmit() {
 		Authority auth = checkAuthority(buildResource(Modules.s_menu_module, Operation.s_operation_add));
 		if (auth != null) {
 			return auth.getName();
+		}
+		if (!checkShop(m_menu.getShopId())) {
+			return Authority.NoAuth.getName();
 		}
 		try {
 			int id = m_menuService.insertMenu(m_menu);
@@ -176,7 +166,6 @@ public class MenuAction extends PagedAction {
 		if (!checkShop(m_menu.getShopId())) {
 			return Authority.NoAuth.getName();
 		}
-		;
 		try {
 			int count = m_menuService.updateMenu(m_menu);
 			if (count > 0) {

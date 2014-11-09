@@ -16,6 +16,8 @@ public class User {
 	private String m_realName;
 
 	private int m_role;
+	
+	private int m_shopId;
 
 	private Date m_creationDate;
 
@@ -92,6 +94,14 @@ public class User {
 	public void setUserName(String userName) {
 		m_userName = userName;
 	}
+	
+	public int getShopId() {
+   	return m_shopId;
+   }
+
+	public void setShopId(int shopId) {
+   	m_shopId = shopId;
+   }
 
 	@Override
 	public String toString() {

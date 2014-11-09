@@ -128,4 +128,25 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+   public int queryAllSize(int shopId) {
+		try {
+			return m_userDao.queryAllSize(shopId);
+		} catch (Exception e) {
+			m_logger.error(e.getMessage(), e);
+			return -1;
+		}
+   }
+
+	@SuppressWarnings("unchecked")
+   @Override
+   public List<User> queryLimitedUsers(int start, int size, int shopId) {
+		try {
+			return m_userDao.queryLimitedUsers(start, size,shopId);
+		} catch (Exception e) {
+			m_logger.error(e.getMessage(), e);
+			return new ArrayList<User>();
+		}
+   }
+
 }

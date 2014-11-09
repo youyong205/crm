@@ -1,6 +1,7 @@
 package com.order;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -65,9 +66,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Order> queryLimitedOrders(int start, int size,int shopId) {
+	public List<Order> queryLimitedOrders(int start, int size, int shopId) {
 		try {
-			return m_orderDao.queryLimitedOrders(start, size,shopId);
+			return m_orderDao.queryLimitedOrders(start, size, shopId);
 		} catch (Exception e) {
 			m_logger.error(e.getMessage(), e);
 			return new ArrayList<Order>();
@@ -85,6 +86,17 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			m_logger.error(e.getMessage(), e);
 			return -1;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> queryOrdersByDate(Date date) {
+		try {
+			return m_orderDao.queryOrdersByDate(date);
+		} catch (Exception e) {
+			m_logger.error(e.getMessage(), e);
+			return new ArrayList<Order>();
 		}
 	}
 

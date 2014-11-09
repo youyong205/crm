@@ -18,7 +18,7 @@
 			<li class="active">订单列表</li>
 		</ul>
 	</div>
-	<form class=" margin-buttom" action="orderList.do" method="post">
+	<form class="margin-buttom" action="orderList.do" method="post">
 		<div style="padding-left:5px;padding-top:8px;"><strong>店铺</strong>
 			  	 <s:select name="shopId" id="shop"
 						list="shops"  listKey="id" listValue="name"  value="shopId"

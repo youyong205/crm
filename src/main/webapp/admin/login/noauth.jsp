@@ -7,7 +7,7 @@
 <a:body>
 	<form action="login.do" id="form" method="post">
   		<s:actionerror/>
-  		<h2 class='text-error'>您没有足够权限，请向系统管理员申请！</h2>
+  		<h2 class='text-error text-center'>您没有足够权限，请向系统管理员申请！</h2>
 	</form>
 </a:body>
 

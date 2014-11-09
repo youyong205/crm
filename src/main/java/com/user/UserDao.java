@@ -73,4 +73,22 @@ public class UserDao {
 		return m_baseDao.update("user.update", user);
 	}
 
+	public int queryAllSize(int shopId) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("shopId", shopId);
+
+		return (Integer) m_baseDao.queryForObject("user.queryAllSize", parameters);
+   }
+
+	@SuppressWarnings("rawtypes")
+   public List queryLimitedUsers(int start, int size, int shopId) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("start", start);
+		parameters.put("size", size);
+		parameters.put("shopId", shopId);
+		return m_baseDao.queryForList("user.queryLimitedUsers", parameters);
+   }
+
 }

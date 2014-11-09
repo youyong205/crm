@@ -12,11 +12,20 @@
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
 				href="index.do">首页</a></li>
-			<li>系统管理</li>
-			<li class="active">用户详细信息</li>
+			<li>店铺管理</li>
+			<li class="active">员工详细信息</li>
 		</ul>
 	</div>
 	<table class="table table-striped table-bordered table-condensed">
+		<input type="hidden" name="shopId"
+					value="<s:property value="shopId"/>" />
+		<tr>
+				<td style="text-align: right;"><strong
+					class="text-success">商户名</strong></td>
+				<td><s:select name="user.shopId" list="shops"  listKey="id" listValue="name"  value="shopId"
+						theme="simple">
+					</s:select></td>
+			</tr>
 		<tr>
 			<td width="20%" style="text-align: right;"><strong
 				class="text-success">用户名</strong></td>
@@ -48,7 +57,7 @@
 </a:body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#systemMenu').addClass("active open");
+		$('#shopMenu').addClass("active open");
 		$('#userList').addClass("active");
 	});
 </script>

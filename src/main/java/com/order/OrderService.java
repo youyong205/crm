@@ -1,5 +1,6 @@
 package com.order;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderService {
@@ -15,5 +16,7 @@ public interface OrderService {
 	public List<Order> queryLimitedOrders(int start, int size,int shopId);
 
 	public int updateOrder(Order order);
+	
+	public List<Order> queryOrdersByDate(Date date);
 
 }

@@ -4,8 +4,14 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="report" extends="default">
-		<action name="index" class="reportAction" method="reportIndex">
+		<action name="reportHistory" class="reportAction" method="reportIndex">
 			<result name="success">admin/report/ReportIndex.jsp</result>
+		</action>
+		<action name="today" class="reportAction" method="reportToday">
+			<result name="success">admin/report/ReportToday.jsp</result>
+		</action>
+		<action name="index" class="reportAction" method="reportToday">
+			<result name="success">admin/report/ReportToday.jsp</result>
 		</action>
 	</package>	
 </struts>

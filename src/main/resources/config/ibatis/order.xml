@@ -30,6 +30,13 @@
 		</dynamic>
 		 order by id desc  limit #start#,#size#
 	</select>
+	<select id="order.queryOrdersByDate" resultClass="order" parameterClass="date">
+		select
+		<include refid="order.columns" />
+		from orderInfo
+		where period=#period#
+		order by id desc
+	</select>
 	<select id="order.findById" resultClass="order" parameterClass="int">
 		select
 		<include refid="order.columns" />

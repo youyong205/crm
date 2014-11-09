@@ -41,7 +41,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 
 	@Autowired
 	protected LogService m_logService;
-	
+
 	@Autowired
 	protected ShopService m_shopService;
 
@@ -57,7 +57,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 	public String buildResource(String module, String oper) {
 		return module + ":" + oper;
 	}
-	
+
 	public boolean checkShop(int shopId) {
 		User user = queryUserInfo();
 		int userId = user.getId();
@@ -67,12 +67,33 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 		}
 		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
 
-		for(Shop shop:shops){
-			if(shop.getId()==shopId){
+		for (Shop shop : shops) {
+			if (shop.getId() == shopId) {
 				return true;
 			}
 		}
+		
+		if(user.getShopId()==shopId){
+			return true;
+		}
 		return false;
+	}
+
+	public List<Shop> queryShop() {
+		User user = queryUserInfo();
+		int userId = user.getId();
+
+		if (isAdmin(user.getUserName())) {
+			userId = 0;
+		}
+		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
+		
+		int shopId = user.getShopId();
+
+		if(shopId>0){
+			shops.add(m_shopService.findByPK(shopId));
+		}
+		return shops;
 	}
 
 	public Authority checkAuthority(String resources) {
@@ -84,9 +105,6 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 		} else {
 			if (!user.getResources().containsKey(resources)) {
 				auth = Authority.NoAuth;
-
-				// TODO remove me
-				auth = null;
 			}
 		}
 		if (auth != null) {
@@ -102,10 +120,10 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 		}
 		return auth;
 	}
-	
+
 	public boolean isAdmin(String userName) {
-	   return "yong.you".equals(userName);
-   }
+		return "yong.you".equals(userName);
+	}
 
 	public int computeTotalPages(int totalSize) {
 		return (int) Math.ceil(totalSize * 1.0 / SIZE);
@@ -195,6 +213,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 
 	public User queryUserInfo() {
 		Object object = m_session.get("user");
+		
 		if (object != null) {
 			return (User) object;
 		} else {
@@ -218,5 +237,9 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 	public void setSession(Map<String, Object> session) {
 		m_session = session;
 	}
+
+	public void setShopService(ShopService shopService) {
+   	m_shopService = shopService;
+   }
 
 }

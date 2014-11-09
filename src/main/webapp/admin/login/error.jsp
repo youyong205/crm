@@ -49,8 +49,8 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
-												请输入你的登录信息
+												<i class="ace-icon fa fa-coffee error"></i>
+												<span class="red">用户名密码出错,重新输入</span>
 											</h4>
 
 											<div class="space-6"></div>
@@ -247,6 +247,20 @@
 								</div><!-- /.signup-box -->
 							</div><!-- /.position-relative -->
 
+							<div class="navbar-fixed-top align-right">
+								<br />
+								&nbsp;
+								<a id="btn-login-dark" href="#">黑</a>
+								&nbsp;
+								<span class="blue">/</span>
+								&nbsp;
+								<a id="btn-login-blur" href="#">蓝</a>
+								&nbsp;
+								<span class="blue">/</span>
+								&nbsp;
+								<a id="btn-login-light" href="#">白</a>
+								&nbsp; &nbsp; &nbsp;
+							</div>
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->

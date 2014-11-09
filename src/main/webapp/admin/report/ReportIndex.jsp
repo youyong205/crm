@@ -15,22 +15,16 @@
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
 				href="index.do">首页</a></li>
 			<li>店铺管理</li>
-			<li class="active">营业信息</li>
+			<li class="active">历史报表</li>
 		</ul>
 	</div>
 		        
 	<form id="form" class="form-inline"  action="index.do" method="post">
-		<table>
-			<td>
-			<strong>店铺</strong>
-			  		 <s:select name="shopId" id="shop"
-						list="shops"  listKey="id" listValue="name"  value="shopId"
-						theme="simple" >
-				 </s:select>
-			</td>
+		<table class="table table-striped table-bordered table-condensed">
+		 <tr class="text-center">
 			<td>
 				<div id="datetimepicker1" class="input-append  date">
-		           <input name="start"  size="10" class="{required:true,date:true}"
+		           开始<input name="start"  size="10" class="{required:true,date:true}"
 		              data-format="yyyy-MM-dd" type="text"  value='<s:date name="start" format="yyyy-MM-dd"/>'></input> <span class="add-on">
 		              <i class="ace-icon fa fa-calendar"></i>
 		           </span>
@@ -38,14 +32,21 @@
 		        
 			</td><td style="padding-left:3px">
 			 <div id="datetimepicker2" class="input-append   date">
-		           <input name="end"  size="10"  class="{required:true,date:true}"
+		          结束 <input name="end"  size="10"  class="{required:true,date:true}"
 		              data-format="yyyy-MM-dd" type="text"  value='<s:date name="end" format="yyyy-MM-dd"/>'></input> <span class="add-on">
 		              <i class="ace-icon fa fa-calendar"></i>
 		           </span>
 		        </div></td>
-            <td style="padding-left:3px;">
+            </tr><tr class="text-center">
+			<td>
+			<strong>店铺</strong>
+			  		 <s:select name="shopId" id="shop"
+						list="shops"  listKey="id" listValue="name"  value="shopId"
+						theme="simple" >
+				 </s:select>
+			</td><td style="padding-left:3px;">
 			  	<button type="submit" class="btn btn-success btn-sm">查询</button></div>
-			  </td>
+			  </td></tr>
 		</table>
 	</form>
 	

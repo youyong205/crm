@@ -12,6 +12,7 @@ import com.PagedAction;
 import com.log.Log;
 import com.role.Role;
 import com.role.RoleService;
+import com.shop.Shop;
 
 public class UserAction extends PagedAction {
 
@@ -22,6 +23,10 @@ public class UserAction extends PagedAction {
 	private List<User> m_users;
 
 	private int m_userId;
+
+	private List<Shop> m_shops;
+
+	private int m_shopId;
 
 	@Autowired
 	private UserService m_userService;
@@ -77,6 +82,7 @@ public class UserAction extends PagedAction {
 	}
 
 	public String userAdd() {
+		m_shops = queryShop();
 		m_roles = m_roleService.queryLimitedRoles(0, Integer.MAX_VALUE);
 		return SUCCESS;
 	}
@@ -85,6 +91,9 @@ public class UserAction extends PagedAction {
 		Authority auth = checkAuthority(buildResource(Modules.s_user_module, Operation.s_operation_add));
 		if (auth != null) {
 			return auth.getName();
+		}
+		if (!checkShop(m_user.getShopId())) {
+			return Authority.NoAuth.getName();
 		}
 		try {
 			int id = m_userService.insertUser(m_user);
@@ -117,6 +126,9 @@ public class UserAction extends PagedAction {
 		if (auth != null) {
 			return auth.getName();
 		}
+		if (!checkShop(m_shopId)) {
+			return Authority.NoAuth.getName();
+		}
 		try {
 			int count = m_userService.deleteUser(m_userId);
 			if (count > 0) {
@@ -139,13 +151,21 @@ public class UserAction extends PagedAction {
 			return auth.getName();
 		}
 		try {
-			m_totalSize = m_userService.queryAllSize();
+			m_shops = queryShop();
+
+			if (m_shopId == 0 && m_shops.size() > 0) {
+				m_shopId = m_shops.get(0).getId();
+			}
+			if (!checkShop(m_shopId)) {
+				return Authority.NoAuth.getName();
+			}
+			m_totalSize = m_userService.queryAllSize(m_shopId);
 			m_totalPages = computeTotalPages(m_totalSize);
 			int start = (m_index - 1) * SIZE;
 			if (start < 0) {
 				start = 0;
 			}
-			m_users = m_userService.queryLimitedUsers(start, SIZE);
+			m_users = m_userService.queryLimitedUsers(start, SIZE,m_shopId);
 			return SUCCESS;
 		} catch (Exception e) {
 			m_logger.error(e.getMessage(), e);
@@ -154,6 +174,15 @@ public class UserAction extends PagedAction {
 	}
 
 	public String userUpdate() {
+		Authority auth = checkAuthority(buildResource(Modules.s_user_module, Operation.s_operation_update));
+
+		if (auth != null) {
+			return auth.getName();
+		}
+		if (!checkShop(m_shopId)) {
+			return Authority.NoAuth.getName();
+		}
+		m_shops = queryShop();
 		try {
 			m_user = m_userService.findByPK(m_userId);
 			m_roles = m_roleService.queryLimitedRoles(0, Integer.MAX_VALUE);
@@ -179,6 +208,9 @@ public class UserAction extends PagedAction {
 		
 		if (auth != null) {
 			return auth.getName();
+		}
+		if (!checkShop(m_user.getShopId())) {
+			return Authority.NoAuth.getName();
 		}
 		try {
 			int count = m_userService.updateUser(m_user);
@@ -206,4 +238,16 @@ public class UserAction extends PagedAction {
 		}
 	}
 
+	public int getShopId() {
+   	return m_shopId;
+   }
+
+	public void setShopId(int shopId) {
+   	m_shopId = shopId;
+   }
+
+	public List<Shop> getShops() {
+   	return m_shops;
+   }
+	
 }

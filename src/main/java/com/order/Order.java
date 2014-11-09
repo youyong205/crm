@@ -1,5 +1,6 @@
 package com.order;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Order {
@@ -94,12 +95,12 @@ public class Order {
 	}
 
 	public int getTableNumber() {
-   	return m_tableNumber;
-   }
+		return m_tableNumber;
+	}
 
 	public void setTableNumber(int tableNumber) {
-   	m_tableNumber = tableNumber;
-   }
+		m_tableNumber = tableNumber;
+	}
 
 	public int getNumber() {
 		return m_number;
@@ -131,5 +132,17 @@ public class Order {
 
 	public void setModifyDate(Date modifyDate) {
 		m_modifyDate = modifyDate;
+	}
+
+	public String getAvg() {
+		double avg = 0.0;
+
+		if (m_number > 0) {
+			avg = (m_money1 + m_money2 + m_money3) / m_number;
+		}
+
+		DecimalFormat df = new DecimalFormat("0.0");
+
+		return df.format(avg);
 	}
 }

@@ -12,15 +12,23 @@
 		<ul class="breadcrumb">
 			<li><i class="ace-icon fa fa-home home-icon"></i> <a
 				href="index.do">首页</a></li>
-			<li>系统管理</li>
-			<li class="active">编辑用户信息</li>
+			<li>店铺管理</li>
+			<li class="active">编辑员工信息</li>
 		</ul>
 	</div>
 	<form action="userUpdateSubmit.do" id="form" method="post">
 		<table class="table table-striped table-bordered table-condensed">
 			<tr>
+				<td style="text-align: right;"><strong
+					class="text-success">商户名</strong></td>
+				<td><s:select name="user.shopId" list="shops"  listKey="id" listValue="name"  value="shopId"
+						theme="simple">
+					</s:select></td>
+			</tr>
+			<tr>
 				<input type="hidden" name="user.id" value="<s:property value="user.id"/>"/>
 				<input type="hidden" name="index" value="<s:property value="index"/>"/>
+				<input type="hidden" name="shopId"	value="<s:property value="shopId"/>" />
 				<td width="20%" style="text-align: right;"><strong
 					class="text-success">用户名</strong></td>
 				<td><input type="text" name="user.userName"
@@ -33,7 +41,6 @@
 					value="<s:property value="user.password"/>"
 					class="{required:true,maxlength:64}" /></td>
 			</tr>
-
 			<tr>
 				<td style="text-align: right;"><strong class="text-success">真实姓名</strong></td>
 				<td><input type="text" name="user.realName"
@@ -57,7 +64,7 @@
 </a:body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#systemMenu').addClass("active open");
+		$('#shopMenu').addClass("active open");
 		$('#userList').addClass("active");
 		$("#form").validate();
 	});
