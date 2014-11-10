@@ -17,6 +17,6 @@ public interface OrderService {
 
 	public int updateOrder(Order order);
 	
-	public List<Order> queryOrdersByDate(Date date);
+	public List<Order> queryOrdersByDate(Date date,int shopId);
 
 }

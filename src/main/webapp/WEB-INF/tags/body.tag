@@ -4,7 +4,7 @@
 <html lang="en"><head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta charset="utf-8">
-		<title>CRM管理系统</title>
+		<title>餐饮数据通</title>
 
 		<meta name="description" content="Restyling jQuery UI Widgets and Elements">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -67,7 +67,7 @@
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							CRM管理系统
+							餐饮数据通
 						</small>
 					</a>
 

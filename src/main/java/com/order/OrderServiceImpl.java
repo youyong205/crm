@@ -91,9 +91,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Order> queryOrdersByDate(Date date) {
+	public List<Order> queryOrdersByDate(Date date,int shopId) {
 		try {
-			return m_orderDao.queryOrdersByDate(date);
+			return m_orderDao.queryOrdersByDate(date,shopId);
 		} catch (Exception e) {
 			m_logger.error(e.getMessage(), e);
 			return new ArrayList<Order>();

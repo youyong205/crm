@@ -1,5 +1,6 @@
 package com.order;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -9,6 +10,7 @@ import com.Authority;
 import com.Modules;
 import com.Operation;
 import com.PagedAction;
+import com.TimeHelper;
 import com.log.Log;
 import com.report.Report;
 import com.report.ReportService;
@@ -30,6 +32,8 @@ public class OrderAction extends PagedAction {
 	private int m_shopId;
 
 	private String m_tag;
+
+	private Date m_date;
 
 	@Autowired
 	private OrderService m_orderService;
@@ -58,6 +62,7 @@ public class OrderAction extends PagedAction {
 		if (auth != null) {
 			return auth.getName();
 		}
+		m_date = TimeHelper.getCurrentDay();
 		m_shops = queryShop();
 		return SUCCESS;
 	}
@@ -87,6 +92,8 @@ public class OrderAction extends PagedAction {
 
 				if ("index".equals(m_tag)) {
 					return "today";
+				} else if ("history".equals(m_tag)) {
+					return "history";
 				} else {
 					return SUCCESS;
 				}
@@ -240,6 +247,10 @@ public class OrderAction extends PagedAction {
 
 	public void setTag(String tag) {
 		m_tag = tag;
+	}
+
+	public Date getDate() {
+		return m_date;
 	}
 
 }

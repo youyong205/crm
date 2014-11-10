@@ -71,6 +71,7 @@
 				<td>
 				<div id="datetimepicker1" class="input-append date">
 		           <input name="order.period"    class="{required:true,date:true}"
+		          	 value='<s:date name="date" format="yyyy-MM-dd"/>'
 		              data-format="yyyy-MM-dd" type="text"></input> <span class="add-on">
 		              <i class="ace-icon fa fa-calendar"></i>
 		           </span>

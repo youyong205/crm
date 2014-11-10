@@ -101,7 +101,7 @@
 							<tr class="text-right">
 								<th class="text-right">人数</th>
 								<th class="text-right">价格</th>
-								<th class="text-right">人均</th>
+								<th class="text-right"	>人均</th>
 							</tr>
 						</thead>
 						<tbody>

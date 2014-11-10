@@ -54,8 +54,13 @@ public class OrderDao {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List queryOrdersByDate(Date date){
-		return m_baseDao.queryForList("order.queryOrdersByDate", date);
+	public List queryOrdersByDate(Date period,int shopId){
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("period", period);
+		parameters.put("shopId", shopId);
+	
+		return m_baseDao.queryForList("order.queryOrdersByDate", parameters);
 	}
 
 	public int updateOrder(Order order) {

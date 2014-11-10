@@ -13,6 +13,7 @@
 		<action name="orderAddSubmit" class="orderAction" method="orderAddSubmit">
 			<result name="success" type="redirect">orderList.do?index=${index}&amp;shopId=${shopId}</result>
 			<result name="today" type="redirect">today.do?shopId=${shopId}</result>
+			<result name="history" type="redirect">reportHistory.do?shopId=${shopId}</result>
 		</action>
 		<action name="orderUpdate" class="orderAction" method="orderUpdate" >
 			<result name="success">admin/order/OrderUpdate.jsp</result>

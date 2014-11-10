@@ -37,9 +37,8 @@
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="white" id="id-text2">餐饮CRM系统</span>
+									<span class="white" id="id-text2">餐饮数据通</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; 大众点评</h4>
 							</div>
 
 							<div class="space-6"></div>

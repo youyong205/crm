@@ -78,7 +78,7 @@
 					class="text-success">上月采购总额</strong></td>
 				<td><input type="text" name="shop.purchase"
 					class="{required:true,number:true}" readonly value="<s:property value="shop.purchase"/>" /></td>
-			</tr><tr>
+			</tr><tr style="display:none">
 				<td style="text-align: right;"><strong
 					class="text-success">上月毛利率</strong></td>
 				<td><input type="text" name="shop.interest"

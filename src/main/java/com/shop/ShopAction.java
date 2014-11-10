@@ -99,10 +99,11 @@ public class ShopAction extends PagedAction {
 			m_totalSize = m_shopService.queryAllSize(bossId);
 			m_totalPages = computeTotalPages(m_totalSize);
 			int start = (m_index - 1) * SIZE;
+			
 			if (start < 0) {
 				start = 0;
 			}
-			m_shops = m_shopService.queryLimitedShops(start, SIZE, bossId);
+			m_shops = queryShop();
 			return SUCCESS;
 		} catch (Exception e) {
 			m_logger.error(e.getMessage(), e);

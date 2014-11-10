@@ -19,7 +19,7 @@
 		</ul>
 	</div>
 		        
-	<form id="form" class="form-inline"  action="index.do" method="post">
+	<form id="form" class="form-inline"  action="reportHistory.do" method="post">
 		<table class="table table-striped table-bordered table-condensed">
 		 <tr class="text-center">
 			<td>
@@ -60,7 +60,7 @@
 
 				<div class="infobox-data">
 					<span class="infobox-data-number"><s:property value="report.money"/></span>
-					<div class="infobox-content">当天营业额</div>
+					<div class="infobox-content">总营业额</div>
 				</div>
 
 				<!-- #section:pages/dashboard.infobox.stat -->
@@ -76,7 +76,7 @@
 
 				<div class="infobox-data">
 					<span class="infobox-data-number"><s:property value="report.number"/></span>
-					<div class="infobox-content">当天客流</div>
+					<div class="infobox-content">总客流</div>
 				</div>
 
 				<div class="badge badge-success">
@@ -92,11 +92,14 @@
 
 				<div class="infobox-data">
 					<span class="infobox-data-number"><s:property value="report.avg"/></span>
-					<div class="infobox-content">当天人均</div>
+					<div class="infobox-content">平均人均</div>
 				</div>
 				<div class="stat stat-important">4%</div>
 			</div>
 			<!-- /section:pages/dashboard.infobox.dark -->
+			<div style="margin-top:5px">
+				<button class="btn btn-danger btn-block" id="addOrder">记一笔</button>
+			</div>
 		</div>
 		<div class="col-sm-8">
 			<div id="chart1"></div>
@@ -178,6 +181,12 @@
 		graphChartByDate("chart1","营业趋势图","","元",data1.series);
 		//graphChartByDate("chart2","客流趋势图","","人",data2.series);
 		//graphChartByDate("chart3","人均趋势图","","元",data3.series);
+		
+		$('#addOrder').bind("click",function(){
+			var shopId =<s:property value="shopId"/>;
+			var href = "orderAdd.do?shopId="+shopId+"&index=1&tag=history"
+			window.location.href=href;
+		})
 	});
 </script>
 

@@ -19,7 +19,6 @@ import com.order.Order;
 import com.order.OrderService;
 import com.shop.Shop;
 import com.shop.ShopService;
-import com.user.User;
 
 public class ReportAction extends PagedAction {
 
@@ -66,18 +65,6 @@ public class ReportAction extends PagedAction {
 		return m_reports;
 	}
 
-	public List<Shop> queryShop() {
-		User user = queryUserInfo();
-		int userId = user.getId();
-
-		if (isAdmin(user.getUserName())) {
-			userId = 0;
-		}
-		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
-
-		return shops;
-	}
-
 	public String reportToday() {
 		Authority auth = checkAuthority(buildResource(Modules.s_report_module, Operation.s_operation_detail));
 		if (auth != null) {
@@ -100,7 +87,7 @@ public class ReportAction extends PagedAction {
 		if (retry.size() > 0) {
 			m_report = retry.get(0);
 		}
-		m_orders = m_orderService.queryOrdersByDate(current);
+		m_orders = m_orderService.queryOrdersByDate(current,m_shopId);
 		return SUCCESS;
 	}
 
@@ -137,6 +124,8 @@ public class ReportAction extends PagedAction {
 		Map<Long, Double> people = new LinkedHashMap<Long, Double>();
 		Map<Long, Double> avg = new LinkedHashMap<Long, Double>();
 
+		m_report = new Report();
+		
 		for (Entry<Long, Report> data : datas.entrySet()) {
 			long key = data.getKey();
 			Report value = data.getValue();
@@ -145,7 +134,9 @@ public class ReportAction extends PagedAction {
 				money.put(key, value.getMoney());
 				people.put(key, value.getNumber() * 1.0);
 				avg.put(key, value.getMoney() / value.getNumber());
-
+				
+				m_report.setMoney(m_report.getMoney()+value.getMoney());
+				m_report.setNumber(m_report.getNumber()+value.getNumber());
 			} else {
 				money.put(key, 0.0);
 				people.put(key, 0.0);
@@ -157,17 +148,7 @@ public class ReportAction extends PagedAction {
 		m_chart1.add("客流量趋势", people);
 		m_chart1.add("人均消费趋势", avg);
 
-		Date current = TimeHelper.getCurrentDay();
 
-		m_report = datas.get(current.getTime());
-
-		if (m_report == null) {
-			List<Report> retry = m_reportService.queryByShopId(m_shopId, current, current);
-
-			if (retry.size() > 0) {
-				m_report = retry.get(0);
-			}
-		}
 		return SUCCESS;
 	}
 

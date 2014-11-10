@@ -72,8 +72,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 				return true;
 			}
 		}
-		
-		if(user.getShopId()==shopId){
+		if (user.getShopId() == shopId) {
 			return true;
 		}
 		return false;
@@ -87,10 +86,10 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 			userId = 0;
 		}
 		List<Shop> shops = m_shopService.queryLimitedShops(0, Integer.MAX_VALUE, userId);
-		
+
 		int shopId = user.getShopId();
 
-		if(shopId>0){
+		if (shopId > 0) {
 			shops.add(m_shopService.findByPK(shopId));
 		}
 		return shops;
@@ -213,7 +212,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 
 	public User queryUserInfo() {
 		Object object = m_session.get("user");
-		
+
 		if (object != null) {
 			return (User) object;
 		} else {
@@ -239,7 +238,7 @@ public abstract class PagedAction extends ActionSupport implements SessionAware 
 	}
 
 	public void setShopService(ShopService shopService) {
-   	m_shopService = shopService;
-   }
+		m_shopService = shopService;
+	}
 
 }
